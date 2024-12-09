@@ -21,14 +21,14 @@ USE `cinema`;
 
 -- Listage de la structure de table cinema. acteur
 CREATE TABLE IF NOT EXISTS `acteur` (
-  `id_acteur` int NOT NULL,
+  `id_acteur` int NOT NULL AUTO_INCREMENT,
   `id_personne` int DEFAULT NULL,
   PRIMARY KEY (`id_acteur`),
-  KEY `id_personne` (`id_personne`),
+  KEY `FK_acteur_personne` (`id_personne`),
   CONSTRAINT `FK_acteur_personne` FOREIGN KEY (`id_personne`) REFERENCES `personne` (`id_personne`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table cinema.acteur : ~27 rows (environ)
+-- Listage des données de la table cinema.acteur : ~6 rows (environ)
 INSERT INTO `acteur` (`id_acteur`, `id_personne`) VALUES
 	(1, 1),
 	(2, 2),
@@ -60,43 +60,42 @@ INSERT INTO `acteur` (`id_acteur`, `id_personne`) VALUES
 
 -- Listage de la structure de table cinema. film
 CREATE TABLE IF NOT EXISTS `film` (
-  `id_film` int NOT NULL,
+  `id_film` int NOT NULL AUTO_INCREMENT,
   `titre` varchar(50) DEFAULT NULL,
   `duree` int DEFAULT NULL,
   `anneeSortie` int DEFAULT NULL,
   `synopsis` text,
   `note` float NOT NULL DEFAULT '0',
   `affiche` varchar(255) NOT NULL DEFAULT '0',
-  `id_realisateur` int DEFAULT NULL,
+  `id_realisateur` int NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_film`),
-  KEY `id_realisateur` (`id_realisateur`),
-  CONSTRAINT `FK_film_realisateur` FOREIGN KEY (`id_realisateur`) REFERENCES `realisateur` (`id_realisateur`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  KEY `FK_film_realisateur` (`id_realisateur`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Listage des données de la table cinema.film : ~15 rows (environ)
 INSERT INTO `film` (`id_film`, `titre`, `duree`, `anneeSortie`, `synopsis`, `note`, `affiche`, `id_realisateur`) VALUES
-	(1, 'Avengers : Endgame', 181, 2019, 'Les Avengers se regroupent pour inverser les effets du snap de Thanos et sauver l\'univers.', 8.4, 'https://cdn.traileraddict.com/content/marvel-studios/avengers-endgame-poster-35.jpg', NULL),
-	(2, 'The Dark Knight: Le Chevalier Noir', 152, 2008, 'Batman doit affronter le Joker, un criminel sans scrupules qui menace Gotham City.', 9, 'https://image.tmdb.org/t/p/original/pKKvCaL1TPTVtbI6EeliyND3api.jpg', NULL),
-	(3, 'Inception', 148, 2010, 'Un voleur spécialisé dans l\'extraction d\'idées doit réaliser l\'implantation d\'une idée.', 8.8, 'https://i.pinimg.com/originals/6e/25/74/6e25742131f52262b73d020e3f6c2ab2.jpg', NULL),
-	(4, 'Interstellar', 169, 2014, 'Des astronautes voyagent à travers un trou de ver pour sauver l\'humanité en crise.', 8.6, 'https://flxt.tmsimg.com/assets/p10543523_p_v13_aq.jpg', NULL),
-	(5, 'Titanic', 195, 1997, 'L\'histoire d\'amour entre Jack et Rose se déroule à bord du légendaire RMS Titanic.', 7.8, 'https://image.tmdb.org/t/p/original/vpsvHLkoeKUjceIMeNSqCp3xEyY.jpg', NULL),
-	(6, 'Avatar', 162, 2009, 'Jake Sully, un ex-marine paraplégique, est envoyé sur la planète Pandora pour espionner.', 7.8, 'https://image.tmdb.org/t/p/original/b9ixaRHHhkdeMfUn3xOcHWY5IXI.jpg', NULL),
-	(7, 'Deadpool', 108, 2016, 'Un ancien soldat des forces spéciales devenu mercenaire cherche à se venger de son agresseur.', 8, 'https://www.imgikzy.com/upload/vod/20221021-38/8c157b713079ae02c9deb2538e1a88bc.jpg', NULL),
-	(8, 'Deadpool 2', 119, 2018, 'Deadpool forme une équipe pour protéger un jeune mutant des menaces de l\'avenir.', 7.7, 'https://i.pinimg.com/originals/41/5e/c5/415ec596fe7863623bcccfca9d6c2382.jpg', NULL),
-	(9, 'Jurassic Park : Le Monde Perdu', 127, 1993, 'Des chercheurs retournent sur l\'île de Jurassic Park pour étudier les dinosaures survivants.', 6.9, 'https://www.tvguide.com/a/img/catalog/provider/1/2/1-9972933606.jpg', NULL),
-	(10, 'Pulp Fiction', 154, 1994, 'Les destins croisés de criminels à Los Angeles, entre violence et humour noir.', 8.9, 'https://picfiles.alphacoders.com/371/thumb-1920-371109.jpg', NULL),
-	(11, 'Forrest Gump', 142, 1994, 'L\'histoire de Forrest Gump, un homme simple mais au destin exceptionnel.', 8.8, 'https://www.originalfilmart.com/cdn/shop/files/forrest_gump_1991_original_film_art.webp?v=1700679183&width=1200', NULL),
-	(12, 'Matrix', 136, 1999, 'Neo découvre que la réalité qu\'il connaît n\'est qu\'une simulation.', 8.7, 'https://www.rogerebert.com/wp-content/uploads/2024/03/The-Matrix.jpg', NULL),
-	(13, 'Gladiator', 155, 2000, 'Un général romain trahi cherche à venger la mort de sa famille dans l\'arène des gladiateurs.', 8.5, 'https://i.pinimg.com/originals/97/e3/32/97e332e116d439c05a2ebf7fbc247f53.jpg', NULL),
-	(14, 'Green Lantern', 114, 2011, '	Hal Jordan, un pilote d\'avion, reçoit un anneau magique et devient un super-héros.', 5.5, 'https://images-na.ssl-images-amazon.com/images/S/pv-target-images/1f19fadf4dce201689d63e1dca2d6df83a3cc7b37b84982b5f1b1f010a1ec00a._RI_TTW_.jpg', NULL),
-	(15, 'Terminator', 107, 1984, 'Un cyborg envoyé du futur pour tuer Sarah Connor, mère du futur leader de la résistance.', 8, 'https://i.etsystatic.com/27475238/r/il/7e8a92/3647228488/il_fullxfull.3647228488_37t3.jpg', NULL);
+	(1, 'Avengers : Endgame', 181, 2019, 'Les Avengers se regroupent pour inverser les effets du snap de Thanos et sauver l\'univers.', 8.4, 'https://cdn.traileraddict.com/content/marvel-studios/avengers-endgame-poster-35.jpg', 0),
+	(2, 'The Dark Knight: Le Chevalier Noir', 152, 2008, 'Batman doit affronter le Joker, un criminel sans scrupules qui menace Gotham City.', 9, 'https://image.tmdb.org/t/p/original/pKKvCaL1TPTVtbI6EeliyND3api.jpg', 0),
+	(3, 'Inception', 148, 2010, 'Un voleur spécialisé dans l\'extraction d\'idées doit réaliser l\'implantation d\'une idée.', 8.8, 'https://i.pinimg.com/originals/6e/25/74/6e25742131f52262b73d020e3f6c2ab2.jpg', 0),
+	(4, 'Interstellar', 169, 2014, 'Des astronautes voyagent à travers un trou de ver pour sauver l\'humanité en crise.', 8.6, 'https://flxt.tmsimg.com/assets/p10543523_p_v13_aq.jpg', 0),
+	(5, 'Titanic', 195, 1997, 'L\'histoire d\'amour entre Jack et Rose se déroule à bord du légendaire RMS Titanic.', 7.8, 'https://image.tmdb.org/t/p/original/vpsvHLkoeKUjceIMeNSqCp3xEyY.jpg', 0),
+	(6, 'Avatar', 162, 2009, 'Jake Sully, un ex-marine paraplégique, est envoyé sur la planète Pandora pour espionner.', 7.8, 'https://image.tmdb.org/t/p/original/b9ixaRHHhkdeMfUn3xOcHWY5IXI.jpg', 0),
+	(7, 'Deadpool', 108, 2016, 'Un ancien soldat des forces spéciales devenu mercenaire cherche à se venger de son agresseur.', 8, 'https://www.imgikzy.com/upload/vod/20221021-38/8c157b713079ae02c9deb2538e1a88bc.jpg', 0),
+	(8, 'Deadpool 2', 119, 2018, 'Deadpool forme une équipe pour protéger un jeune mutant des menaces de l\'avenir.', 7.7, 'https://i.pinimg.com/originals/41/5e/c5/415ec596fe7863623bcccfca9d6c2382.jpg', 0),
+	(9, 'Jurassic Park : Le Monde Perdu', 127, 1993, 'Des chercheurs retournent sur l\'île de Jurassic Park pour étudier les dinosaures survivants.', 6.9, 'https://www.tvguide.com/a/img/catalog/provider/1/2/1-9972933606.jpg', 0),
+	(10, 'Pulp Fiction', 154, 1994, 'Les destins croisés de criminels à Los Angeles, entre violence et humour noir.', 8.9, 'https://picfiles.alphacoders.com/371/thumb-1920-371109.jpg', 0),
+	(11, 'Forrest Gump', 142, 1994, 'L\'histoire de Forrest Gump, un homme simple mais au destin exceptionnel.', 8.8, 'https://www.originalfilmart.com/cdn/shop/files/forrest_gump_1991_original_film_art.webp?v=1700679183&width=1200', 0),
+	(12, 'Matrix', 136, 1999, 'Neo découvre que la réalité qu\'il connaît n\'est qu\'une simulation.', 8.7, 'https://www.rogerebert.com/wp-content/uploads/2024/03/The-Matrix.jpg', 0),
+	(13, 'Gladiator', 155, 2000, 'Un général romain trahi cherche à venger la mort de sa famille dans l\'arène des gladiateurs.', 8.5, 'https://i.pinimg.com/originals/97/e3/32/97e332e116d439c05a2ebf7fbc247f53.jpg', 0),
+	(14, 'Green Lantern', 114, 2011, '	Hal Jordan, un pilote d\'avion, reçoit un anneau magique et devient un super-héros.', 5.5, 'https://images-na.ssl-images-amazon.com/images/S/pv-target-images/1f19fadf4dce201689d63e1dca2d6df83a3cc7b37b84982b5f1b1f010a1ec00a._RI_TTW_.jpg', 0),
+	(15, 'Terminator', 107, 1984, 'Un cyborg envoyé du futur pour tuer Sarah Connor, mère du futur leader de la résistance.', 8, 'https://i.etsystatic.com/27475238/r/il/7e8a92/3647228488/il_fullxfull.3647228488_37t3.jpg', 0);
 
 -- Listage de la structure de table cinema. genre
 CREATE TABLE IF NOT EXISTS `genre` (
-  `id_genre` int NOT NULL,
+  `id_genre` int NOT NULL AUTO_INCREMENT,
   `type` varchar(50) NOT NULL DEFAULT '',
   PRIMARY KEY (`id_genre`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Listage des données de la table cinema.genre : ~9 rows (environ)
 INSERT INTO `genre` (`id_genre`, `type`) VALUES
@@ -158,13 +157,13 @@ INSERT INTO `joue` (`id_film`, `id_acteur`, `id_role`) VALUES
 
 -- Listage de la structure de table cinema. personne
 CREATE TABLE IF NOT EXISTS `personne` (
-  `id_personne` int NOT NULL,
+  `id_personne` int NOT NULL AUTO_INCREMENT,
   `nom` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `prenom` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `sexe` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `dateNaissance` date NOT NULL,
   PRIMARY KEY (`id_personne`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Listage des données de la table cinema.personne : ~38 rows (environ)
 INSERT INTO `personne` (`id_personne`, `nom`, `prenom`, `sexe`, `dateNaissance`) VALUES
@@ -264,15 +263,14 @@ INSERT INTO `possede` (`id_film`, `id_genre`) VALUES
 
 -- Listage de la structure de table cinema. realisateur
 CREATE TABLE IF NOT EXISTS `realisateur` (
-  `id_realisateur` int NOT NULL,
+  `id_realisateur` int NOT NULL AUTO_INCREMENT,
   `id_personne` int NOT NULL,
   PRIMARY KEY (`id_realisateur`),
-  KEY `id_personne` (`id_personne`),
   KEY `FK_realisateur_personne` (`id_personne`),
   CONSTRAINT `FK_realisateur_personne` FOREIGN KEY (`id_personne`) REFERENCES `personne` (`id_personne`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table cinema.realisateur : ~11 rows (environ)
+-- Listage des données de la table cinema.realisateur : ~0 rows (environ)
 INSERT INTO `realisateur` (`id_realisateur`, `id_personne`) VALUES
 	(1, 24),
 	(2, 25),
@@ -288,10 +286,10 @@ INSERT INTO `realisateur` (`id_realisateur`, `id_personne`) VALUES
 
 -- Listage de la structure de table cinema. role
 CREATE TABLE IF NOT EXISTS `role` (
-  `id_role` int NOT NULL,
+  `id_role` int NOT NULL AUTO_INCREMENT,
   `nomPersonnage` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id_role`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Listage des données de la table cinema.role : ~29 rows (environ)
 INSERT INTO `role` (`id_role`, `nomPersonnage`) VALUES
