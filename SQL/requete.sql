@@ -75,7 +75,7 @@ INNER JOIN realisateur ON personne.id_personne = realisateur.id_personne;
 SELECT 
 film.titre, film.anneeSortie
 FROM film
-WHERE film.anneeSortie >= YEAR("2024-12-10") - 5
+WHERE film.anneeSortie >= YEAR(CURDATE()) - 5
 ORDER BY film.anneeSortie DESC
 
 -- Nombre d’hommes et de femmes parmi les acteurs 
