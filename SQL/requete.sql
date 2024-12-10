@@ -53,3 +53,22 @@ INNER JOIN film ON joue.id_film = film.id_film
 WHERE film.id_film = 5
 
 -- Films tournés par un acteur en particulier (id_acteur) avec leur rôle et l’année de sortie (du film le plus récent au plus ancien)
+SELECT 
+CONCAT(personne.prenom, " ", personne.nom) AS nomActeur,
+role.nomPersonnage,
+film.anneeSortie
+FROM personne
+INNER JOIN acteur ON acteur.id_personne = personne.id_personne
+INNER JOIN joue ON acteur.id_acteur = joue.id_acteur
+INNER JOIN role ON joue.id_role = role.id_role
+INNER JOIN film ON joue.id_film = film.id_film
+WHERE acteur.id_acteur = 12
+ORDER BY film.anneeSortie DESC
+
+-- Liste des personnes qui sont à la fois acteurs et réalisateurs
+SELECT CONCAT(personne.prenom, " ", personne.nom) AS actReal
+FROM personne
+INNER JOIN acteur ON personne.id_personne = acteur.id_personne
+INNER JOIN realisateur ON personne.id_personne = realisateur.id_personne;
+
+-- Liste des films qui ont moins de 5 ans (classés du plus récent au plus ancien)
