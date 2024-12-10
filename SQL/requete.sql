@@ -93,3 +93,14 @@ TIMESTAMPDIFF(YEAR, personne.dateNaissance, NOW()) age
 FROM personne
 INNER JOIN acteur ON personne.id_personne = acteur.id_personne
 WHERE personne.dateNaissance <= DATE_SUB(NOW(), INTERVAL 50 YEAR);
+
+-- Acteurs ayant joué dans 3 films ou plus 
+SELECT
+CONCAT(personne.prenom, " ", personne.nom) AS nomActeur,
+COUNT(film.id_film) AS nbFilms
+FROM personne
+INNER JOIN acteur ON personne.id_personne = acteur.id_personne
+INNER JOIN joue ON acteur.id_acteur = joue.id_acteur
+INNER JOIN film ON joue.id_film = film.id_film
+GROUP BY personne.id_personne
+HAVING COUNT(film.id_film) >= 3
