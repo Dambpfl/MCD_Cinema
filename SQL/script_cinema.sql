@@ -26,9 +26,9 @@ CREATE TABLE IF NOT EXISTS `acteur` (
   PRIMARY KEY (`id_acteur`),
   KEY `FK_acteur_personne` (`id_personne`),
   CONSTRAINT `FK_acteur_personne` FOREIGN KEY (`id_personne`) REFERENCES `personne` (`id_personne`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table cinema.acteur : ~27 rows (environ)
+-- Listage des données de la table cinema.acteur : ~28 rows (environ)
 INSERT INTO `acteur` (`id_acteur`, `id_personne`) VALUES
 	(1, 1),
 	(2, 2),
@@ -56,7 +56,8 @@ INSERT INTO `acteur` (`id_acteur`, `id_personne`) VALUES
 	(24, 35),
 	(25, 36),
 	(26, 37),
-	(27, 38);
+	(27, 38),
+	(28, 40);
 
 -- Listage de la structure de table cinema. film
 CREATE TABLE IF NOT EXISTS `film` (
@@ -71,9 +72,9 @@ CREATE TABLE IF NOT EXISTS `film` (
   PRIMARY KEY (`id_film`),
   KEY `FK_film_realisateur` (`id_realisateur`),
   CONSTRAINT `FK_film_realisateur` FOREIGN KEY (`id_realisateur`) REFERENCES `realisateur` (`id_realisateur`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table cinema.film : ~15 rows (environ)
+-- Listage des données de la table cinema.film : ~16 rows (environ)
 INSERT INTO `film` (`id_film`, `titre`, `duree`, `anneeSortie`, `synopsis`, `note`, `affiche`, `id_realisateur`) VALUES
 	(1, 'Avengers : Endgame', 181, 2019, 'Les Avengers se regroupent pour inverser les effets du snap de Thanos et sauver l\'univers.', 8.4, 'https://cdn.traileraddict.com/content/marvel-studios/avengers-endgame-poster-35.jpg', 1),
 	(2, 'The Dark Knight: Le Chevalier Noir', 152, 2008, 'Batman doit affronter le Joker, un criminel sans scrupules qui menace Gotham City.', 9, 'https://image.tmdb.org/t/p/original/pKKvCaL1TPTVtbI6EeliyND3api.jpg', 3),
@@ -89,7 +90,8 @@ INSERT INTO `film` (`id_film`, `titre`, `duree`, `anneeSortie`, `synopsis`, `not
 	(12, 'Matrix', 136, 1999, 'Neo découvre que la réalité qu\'il connaît n\'est qu\'une simulation.', 8.7, 'https://www.rogerebert.com/wp-content/uploads/2024/03/The-Matrix.jpg', 11),
 	(13, 'Gladiator', 155, 2000, 'Un général romain trahi cherche à venger la mort de sa famille dans l\'arène des gladiateurs.', 8.5, 'https://i.pinimg.com/originals/97/e3/32/97e332e116d439c05a2ebf7fbc247f53.jpg', 12),
 	(14, 'Green Lantern', 114, 2011, '	Hal Jordan, un pilote d\'avion, reçoit un anneau magique et devient un super-héros.', 5.5, 'https://images-na.ssl-images-amazon.com/images/S/pv-target-images/1f19fadf4dce201689d63e1dca2d6df83a3cc7b37b84982b5f1b1f010a1ec00a._RI_TTW_.jpg', 7),
-	(15, 'Terminator', 107, 1984, 'Un cyborg envoyé du futur pour tuer Sarah Connor, mère du futur leader de la résistance.', 8, 'https://i.etsystatic.com/27475238/r/il/7e8a92/3647228488/il_fullxfull.3647228488_37t3.jpg', 4);
+	(15, 'Terminator', 107, 1984, 'Un cyborg envoyé du futur pour tuer Sarah Connor, mère du futur leader de la résistance.', 8, 'https://i.etsystatic.com/27475238/r/il/7e8a92/3647228488/il_fullxfull.3647228488_37t3.jpg', 4),
+	(16, 'Gran Torino', 116, 2008, 'Un vétéran de la guerre de Corée forme une relation avec ses voisins.', 8.1, 'https://image.tmdb.org/t/p/original/4QeeS8PO6Ys1KuKjmbWbOu1WD1U.jpg', 13);
 
 -- Listage de la structure de table cinema. genre
 CREATE TABLE IF NOT EXISTS `genre` (
@@ -123,7 +125,7 @@ CREATE TABLE IF NOT EXISTS `joue` (
   CONSTRAINT `FK_joue_role` FOREIGN KEY (`id_role`) REFERENCES `role` (`id_role`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table cinema.joue : ~30 rows (environ)
+-- Listage des données de la table cinema.joue : ~31 rows (environ)
 INSERT INTO `joue` (`id_film`, `id_acteur`, `id_role`) VALUES
 	(1, 1, 1),
 	(1, 2, 2),
@@ -154,7 +156,8 @@ INSERT INTO `joue` (`id_film`, `id_acteur`, `id_role`) VALUES
 	(13, 24, 26),
 	(13, 25, 27),
 	(15, 26, 28),
-	(15, 27, 29);
+	(15, 27, 29),
+	(16, 28, 30);
 
 -- Listage de la structure de table cinema. personne
 CREATE TABLE IF NOT EXISTS `personne` (
@@ -164,9 +167,9 @@ CREATE TABLE IF NOT EXISTS `personne` (
   `sexe` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `dateNaissance` date NOT NULL,
   PRIMARY KEY (`id_personne`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table cinema.personne : ~38 rows (environ)
+-- Listage des données de la table cinema.personne : ~39 rows (environ)
 INSERT INTO `personne` (`id_personne`, `nom`, `prenom`, `sexe`, `dateNaissance`) VALUES
 	(1, 'Downey Jr', 'Robert', 'M', '1965-04-04'),
 	(2, 'Johansson', 'Scarlett', 'F', '1984-11-22'),
@@ -205,7 +208,8 @@ INSERT INTO `personne` (`id_personne`, `nom`, `prenom`, `sexe`, `dateNaissance`)
 	(36, 'Phoenix', 'Joaquin', 'M', '1974-10-28'),
 	(37, 'Schwarzenegger', 'Arnold', 'M', '1947-07-30'),
 	(38, 'Hamilton', 'Linda', 'F', '1956-09-26'),
-	(39, 'Scott', 'Ridley', 'M', '1937-11-30');
+	(39, 'Scott', 'Ridley', 'M', '1937-11-30'),
+	(40, 'Eastwood', 'Clint', 'M', '1930-05-31');
 
 -- Listage de la structure de table cinema. possede
 CREATE TABLE IF NOT EXISTS `possede` (
@@ -269,9 +273,9 @@ CREATE TABLE IF NOT EXISTS `realisateur` (
   PRIMARY KEY (`id_realisateur`),
   KEY `FK_realisateur_personne` (`id_personne`),
   CONSTRAINT `FK_realisateur_personne` FOREIGN KEY (`id_personne`) REFERENCES `personne` (`id_personne`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table cinema.realisateur : ~11 rows (environ)
+-- Listage des données de la table cinema.realisateur : ~12 rows (environ)
 INSERT INTO `realisateur` (`id_realisateur`, `id_personne`) VALUES
 	(1, 24),
 	(3, 26),
@@ -283,16 +287,17 @@ INSERT INTO `realisateur` (`id_realisateur`, `id_personne`) VALUES
 	(9, 32),
 	(10, 33),
 	(11, 34),
-	(12, 39);
+	(12, 39),
+	(13, 40);
 
 -- Listage de la structure de table cinema. role
 CREATE TABLE IF NOT EXISTS `role` (
   `id_role` int NOT NULL AUTO_INCREMENT,
   `nomPersonnage` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id_role`)
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table cinema.role : ~29 rows (environ)
+-- Listage des données de la table cinema.role : ~30 rows (environ)
 INSERT INTO `role` (`id_role`, `nomPersonnage`) VALUES
 	(1, 'Iron Man'),
 	(2, 'Black Widow'),
@@ -322,7 +327,8 @@ INSERT INTO `role` (`id_role`, `nomPersonnage`) VALUES
 	(26, 'Maximus'),
 	(27, 'Commodus'),
 	(28, 'Terminator'),
-	(29, 'Sarah Connor');
+	(29, 'Sarah Connor'),
+	(30, 'Walt Kowalski');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
