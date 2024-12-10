@@ -72,3 +72,10 @@ INNER JOIN acteur ON personne.id_personne = acteur.id_personne
 INNER JOIN realisateur ON personne.id_personne = realisateur.id_personne;
 
 -- Liste des films qui ont moins de 5 ans (classés du plus récent au plus ancien)
+SELECT 
+film.titre, film.anneeSortie
+FROM film
+WHERE film.anneeSortie >= YEAR("2024-12-10") - 5
+ORDER BY film.anneeSortie DESC
+
+-- Nombre d’hommes et de femmes parmi les acteurs 
