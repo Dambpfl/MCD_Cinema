@@ -79,3 +79,9 @@ WHERE film.anneeSortie >= YEAR("2024-12-10") - 5
 ORDER BY film.anneeSortie DESC
 
 -- Nombre d’hommes et de femmes parmi les acteurs 
+SELECT 
+personne.sexe,
+COUNT(personne.id_personne) AS nombre
+FROM personne
+INNER JOIN acteur ON personne.id_personne = acteur.id_personne
+GROUP BY personne.sexe
