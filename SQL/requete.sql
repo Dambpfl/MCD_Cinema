@@ -5,10 +5,12 @@ CONCAT(p.prenom, " ", p.nom) AS Réalisateur
 FROM film f
 INNER JOIN realisateur r ON f.id_realisateur = r.id_realisateur
 INNER JOIN personne p ON r.id_personne = p.id_personne
+WHERE f.id_film = 5
 
 -- Liste des films dont la durée excède 2h15 classés par durée (du + long au + court) 
 SELECT film.titre, DATE_FORMAT(SEC_TO_TIME(film.duree*60), "%Hh %im") AS Durée
 FROM film
+WHERE film.duree > 135
 ORDER BY film.duree DESC
 
 -- Liste des films d’un réalisateur (en précisant l’année de sortie)
@@ -26,7 +28,7 @@ COUNT(possede.id_film) AS nbFilm
 FROM film
 INNER JOIN possede ON film.id_film = possede.id_film
 INNER JOIN genre ON possede.id_genre = genre.id_genre
-GROUP BY genre.type
+GROUP BY genre.id_genre
 ORDER BY nbFilm DESC
 
 -- Nombre de films par réalisateur (classés dans l’ordre décroissant)
@@ -51,4 +53,3 @@ INNER JOIN film ON joue.id_film = film.id_film
 WHERE film.id_film = 5
 
 -- Films tournés par un acteur en particulier (id_acteur) avec leur rôle et l’année de sortie (du film le plus récent au plus ancien)
- 
