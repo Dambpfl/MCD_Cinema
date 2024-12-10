@@ -75,7 +75,7 @@ INNER JOIN realisateur ON personne.id_personne = realisateur.id_personne;
 SELECT 
 film.titre, film.anneeSortie
 FROM film
-WHERE film.anneeSortie >= YEAR(CURDATE()) - 5
+WHERE film.anneeSortie >= YEAR(CURDATE()) - 5 -- CURDATE() = NOW()
 ORDER BY film.anneeSortie DESC
 
 -- Nombre d’hommes et de femmes parmi les acteurs 
@@ -85,3 +85,11 @@ COUNT(personne.id_personne) AS nombre
 FROM personne
 INNER JOIN acteur ON personne.id_personne = acteur.id_personne
 GROUP BY personne.sexe
+
+-- Liste des acteurs ayant plus de 50 ans (âge révolu et non révolu) 
+SELECT 
+CONCAT(personne.prenom, " ", personne.nom) AS nomActeur,
+TIMESTAMPDIFF(YEAR, personne.dateNaissance, NOW()) age
+FROM personne
+INNER JOIN acteur ON personne.id_personne = acteur.id_personne
+WHERE personne.dateNaissance <= DATE_SUB(NOW(), INTERVAL 50 YEAR);
