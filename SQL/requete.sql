@@ -40,3 +40,15 @@ GROUP BY Réalisateur
 ORDER BY nbFilm DESC
 
 -- Casting d’un film en particulier (id_film) : nom, prénom des acteurs + sexe
+SELECT
+CONCAT(personne.nom, " ", personne.prenom) AS nomActeur,
+personne.sexe,
+film.titre
+FROM personne
+INNER JOIN acteur ON personne.id_personne = acteur.id_personne
+INNER JOIN joue ON acteur.id_acteur = joue.id_acteur
+INNER JOIN film ON joue.id_film = film.id_film
+WHERE film.id_film = 5
+
+-- Films tournés par un acteur en particulier (id_acteur) avec leur rôle et l’année de sortie (du film le plus récent au plus ancien)
+ 
