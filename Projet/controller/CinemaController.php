@@ -74,8 +74,11 @@ class CinemaController {
         require "view/detailsFilm.php";
     }
 
+
+
     public function detActeur($id) {
         $pdo = Connect::seConnecter();
+        // req 1 : infos de l'acteur
         $requete = $pdo->prepare(
             "SELECT CONCAT(personne.prenom, ' ', personne.nom) AS nomActeur,
             personne.dateNaissance, personne.sexe
@@ -85,9 +88,24 @@ class CinemaController {
         $requete->execute(["id" => $id]);
         $detActeur = $requete->fetch();
 
+        // req 2 : filmographie + role -> fetchAll()
+        $requete = $pdo->prepare(
+            "SELECT film.titre, role.nomPersonnage,
+            acteur.id_acteur
+            FROM acteur
+            INNER JOIN joue ON acteur.id_acteur = joue.id_acteur
+            INNER JOIN film ON joue.id_film = film.id_film
+            INNER JOIN role ON joue.id_role = role.id_role
+            WHERE acteur.id_personne = :id
+            ORDER BY film.anneeSortie DESC");
+        $requete->execute(["id" => $id]);
+        $detActeur2 = $requete->fetchAll();
+
         require "view/detailsActeur.php";
     }
 
+
+    
     public function detRealisateur($id) {
         $pdo = Connect::seConnecter();
         $requete = $pdo->prepare(
@@ -100,6 +118,7 @@ class CinemaController {
         $detRealisateur = $requete->fetch();
         require "view/detailsRealisateur.php";
     }
+
 
     public function detGenre($id) {
         $pdo = Connect::seConnecter();
