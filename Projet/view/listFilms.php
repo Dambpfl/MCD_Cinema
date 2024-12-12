@@ -12,9 +12,13 @@
 </head>
 <body>
     <?php foreach ($listFilms as $listFilm) { ?>
-        <img src="<?= $listFilm['affiche']; ?> " alt=""><br>
+
+        <a href="index.php?action=detailsFilm&id=<?= $listFilm['id_film'] ?>"><img src="<?= $listFilm['affiche']; ?>" alt=""></a><br>
+
         <?= $listFilm['titre']; ?> (<?= $listFilm['anneeSortie']; ?>) <br>
+
         <?= $listFilm['note']; ?> <br>
+
     <?php } ?>
 </body>
 </html>

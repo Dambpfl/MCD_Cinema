@@ -8,9 +8,7 @@
     <title>Document</title>
 </head>
 <body>
-    <?= $detActeur['nomActeur']; ?> <br>
-    <?= $detActeur['dateNaissance']; ?> <br>
-    <?= $detActeur['sexe']; ?> <br>
+    <?= $detFilm['titre']; ?>
 </body>
 </html>
 

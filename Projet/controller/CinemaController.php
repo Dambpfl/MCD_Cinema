@@ -11,7 +11,7 @@ class CinemaController {
     public function listFilms() {
         
         $pdo = Connect::seConnecter();
-        $requete = $pdo->query("SELECT affiche, titre, anneeSortie, note FROM film");
+        $requete = $pdo->query("SELECT affiche, titre, anneeSortie, note, id_film FROM film");
         $listFilms = $requete->fetchAll();
         require "view/listFilms.php";
     }
@@ -43,9 +43,26 @@ class CinemaController {
         require "view/listGenres.php";
     }
 
+    public function detFilm($id) {
+        $pdo = Connect::seConnecter();
+
+        // req 1 : infos du film -> fetch()
+        $requete = $pdo->prepare(
+            "SELECT film.affiche, film.titre, film.note, film.anneeSortie, film.duree, film.synopsis
+            FROM film
+            WHERE film.id_film = :id");
+            $requete->execute(["id" => $id]);
+            $detFilm = $requete->fetch();
+        // req 2 : casting du film -> fetchAll()
+
+        require "view/detailsFilm.php";
+    }
+
     public function detActeur($id) {
         $pdo = Connect::seConnecter();
-        $requete = $pdo->prepare("SELECT CONCAT(personne.prenom, ' ', personne.nom) AS nomActeur
+        $requete = $pdo->prepare(
+        "SELECT CONCAT(personne.prenom, ' ', personne.nom) AS nomActeur,
+        personne.dateNaissance, personne.sexe
         FROM personne
         INNER JOIN acteur ON personne.id_personne = acteur.id_personne
         WHERE id_acteur = :id");
