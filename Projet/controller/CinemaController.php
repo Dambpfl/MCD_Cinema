@@ -19,7 +19,7 @@ class CinemaController {
     public function listActeurs(){
         $pdo = Connect::seConnecter();
         $requete = $pdo->query(
-            "SELECT CONCAT(personne.prenom, ' ',personne.nom) AS nomActeur, personne.dateNaissance
+            "SELECT CONCAT(personne.prenom, ' ',personne.nom) AS nomActeur, personne.dateNaissance, personne.id_personne
             FROM personne
             INNER JOIN acteur ON personne.id_personne = acteur.id_personne");
         $listActeurs = $requete->fetchAll();
@@ -45,9 +45,13 @@ class CinemaController {
 
     public function detActeur($id) {
         $pdo = Connect::seConnecter();
-        $requete = $pdo->prepare("SELECT * FROM acteur WHERE id_acteur = :id");
+        $requete = $pdo->prepare("SELECT CONCAT(personne.prenom, ' ', personne.nom) AS nomActeur
+        FROM personne
+        INNER JOIN acteur ON personne.id_personne = acteur.id_personne
+        WHERE id_acteur = :id");
         $requete->execute(["id" => $id]);
-        require "view/acteur/detailActeur.php";
+        $detActeur = $requete->fetch();
+        require "view/detailsActeur.php";
     }
 }
 

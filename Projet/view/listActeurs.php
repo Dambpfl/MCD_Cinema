@@ -10,7 +10,7 @@
 <body>
     <?php foreach ($listActeurs as $listActeur) { ?>
 
-        <?= $listActeur['nomActeur']; ?> <br>
+        <a href="index.php?action=detailsActeur&id=<?= $listActeur['id_personne']?>"><?= $listActeur['nomActeur']; ?></a> <br>
         <?= $listActeur['dateNaissance']; ?> <br><br>
     <?php } ?>
 </body>
