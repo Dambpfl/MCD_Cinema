@@ -16,6 +16,26 @@ class CinemaController {
         require "view/listFilms.php";
     }
 
+    public function listActeurs(){
+        $pdo = Connect::seConnecter();
+        $requete = $pdo->query(
+            "SELECT CONCAT(personne.prenom, ' ',personne.nom) AS nomActeur, personne.dateNaissance
+            FROM personne
+            INNER JOIN acteur ON personne.id_personne = acteur.id_personne");
+        $listActeurs = $requete->fetchAll();
+        require "view/listActeurs.php";
+    }
+
+    public function listRealisateurs(){
+        $pdo = Connect::seConnecter();
+        $requete = $pdo->query(
+            "SELECT CONCAT(personne.prenom, ' ',personne.nom) AS nomRealisateur, personne.dateNaissance
+            FROM personne
+            INNER JOIN realisateur ON personne.id_personne = realisateur.id_personne");
+        $listRealisateurs = $requete->fetchAll();
+        require "view/listRealisateurs.php";
+    }
+
     public function detActeur($id) {
         $pdo = Connect::seConnecter();
         $requete = $pdo->prepare("SELECT * FROM acteur WHERE id_acteur = :id");

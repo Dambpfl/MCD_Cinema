@@ -1,8 +1,5 @@
 <?php ob_start(); ?>
 
-
-<p>Il y a <?= $requete->rowCount(); ?> films</p>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,16 +8,17 @@
     <title>Document</title>
 </head>
 <body>
-    <?php foreach ($listFilms as $listFilm) { ?>
-        <img src="<?= $listFilm['affiche']; ?> " alt=""><br>
-        <?= $listFilm['titre']; ?> (<?= $listFilm['anneeSortie']; ?>) <br>
-        <?= $listFilm['note']; ?> <br>
+    <?php foreach ($listActeurs as $listActeur) { ?>
+
+        <?= $listActeur['nomActeur']; ?> <br>
+        <?= $listActeur['dateNaissance']; ?> <br><br>
     <?php } ?>
 </body>
 </html>
 
+
 <?php 
-$titre = "TOUS NOS FILMS";
+$titre = "LISTE DES ACTEURS";
 $contenu = ob_get_clean(); 
 require_once "view/template.php";
 ?>
