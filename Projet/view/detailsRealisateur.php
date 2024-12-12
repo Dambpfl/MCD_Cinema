@@ -1,4 +1,4 @@
-<?php ob_start(); ?>
+<?php ob_start();?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -8,16 +8,15 @@
     <title>Document</title>
 </head>
 <body>
-    <?php foreach ($listGenres as $listGenre) { ?>
-
-        <a href="index.php?action=detailsGenre&id= <?= $listGenre["id_genre"]?>"><?= $listGenre['type']; ?></a> <br><br>
-    <?php } ?>
+    <?= $detRealisateur['nomRealisateur']; ?> <br>
+    <?= $detRealisateur['dateNaissance']; ?> <br>
+    <?= $detRealisateur['sexe']; ?> <br>
 </body>
 </html>
 
 
-<?php 
-$titre = "TOUS LES GENRES";
+
+<?
 $contenu = ob_get_clean(); 
 require_once "view/template.php";
 ?>

@@ -9,7 +9,7 @@ spl_autoload_register(function ($class_name) {
 $ctrlCinema = new CinemaController();
 
 
-$id = (isset($_GET['id'])) ? $_GET["id"] : null;
+$id = isset($_GET['id']) ? (int)$_GET['id'] : null;
 
 
 if(isset($_GET["action"])){
@@ -22,10 +22,10 @@ if(isset($_GET["action"])){
         case "detailsActeur" : $ctrlCinema->detActeur($id); break;
 
         case "listRealisateurs" : $ctrlCinema->listRealisateurs(); break;
-        case "detailsRealisateur" : $ctrlCinema->detRealisateur(); break;
+        case "detailsRealisateur" : $ctrlCinema->detRealisateur($id); break;
 
         case "listGenres" : $ctrlCinema->listGenres(); break;
-        case "detailsGenre" : $ctrlCinema->detGenre(); break;
+        case "detailsGenre" : $ctrlCinema->detGenre($id); break;
     }
 }
 ?>
