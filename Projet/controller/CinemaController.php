@@ -36,6 +36,13 @@ class CinemaController {
         require "view/listRealisateurs.php";
     }
 
+    public function listGenres(){
+        $pdo = Connect::seConnecter();
+        $requete = $pdo->query("SELECT genre.type FROM genre");
+        $listGenres = $requete->fetchAll();
+        require "view/listGenres.php";
+    }
+
     public function detActeur($id) {
         $pdo = Connect::seConnecter();
         $requete = $pdo->prepare("SELECT * FROM acteur WHERE id_acteur = :id");

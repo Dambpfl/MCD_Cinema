@@ -8,17 +8,16 @@
     <title>Document</title>
 </head>
 <body>
-    <?php foreach ($listRealisateurs as $listRealisateur) { ?>
+    <?php foreach ($listGenres as $listGenre) { ?>
 
-        <?= $listRealisateur['nomRealisateur']; ?> <br>
-        <?= $listRealisateur['dateNaissance']; ?> <br><br>
+        <?= $listGenre['type']; ?> <br><br>
     <?php } ?>
 </body>
 </html>
 
 
 <?php 
-$titre = "LISTE DES RÉALISATEURS";
+$titre = "TOUS LES GENRES";
 $contenu = ob_get_clean(); 
 require_once "view/template.php";
 ?>
