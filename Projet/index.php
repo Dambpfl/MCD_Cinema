@@ -20,9 +20,6 @@ if(isset($_GET["action"])){
         case "listRealisateurs" : $ctrlCinema->listRealisateurs(); break;
         case "detailRealisateur" : $ctrlCinema->detailRealisateur(); break;
 
-        case "listRoles" : $ctrlCinema->listRoles(); break;
-        case "detailRole" : $ctrlCinema->detailRole(); break;
-
         case "listGenres" : $ctrlCinema->listGenres(); break;
         case "detailGenre" : $ctrlCinema->detailGenre(); break;
     }

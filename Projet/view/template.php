@@ -8,11 +8,11 @@
 </head>
 <body>
     <nav><div class="boutons">
-                <a href="index.php?action=listFilms">Films</a>
-                <a href="index.php?action=listActeurs">Acteurs</a>
-                <a href="index.php?action=listRealisateurs">Realisateurs</a>
-                <a href="index.php?action=listGenres">Genres</a>
-                <a href="index.php?action=listRoles">Roles</a>
+                <a href="index.php?action=listFilms">ACCUEIL</a>
+                <a href="index.php?action=listFilms">LISTE DES FILMS</a>
+                <a href="index.php?action=listActeurs">ACTEURS</a>
+                <a href="index.php?action=listRealisateurs">RÉALISATEURS</a>
+                <a href="index.php?action=listGenres">GENRES</a>
             </div>
         </nav>
         <div> <?= $contenu ?></div>     
