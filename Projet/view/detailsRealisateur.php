@@ -11,6 +11,10 @@
     <?= $detRealisateur['nomRealisateur']; ?> <br>
     <?= $detRealisateur['dateNaissance']; ?> <br>
     <?= $detRealisateur['sexe']; ?> <br>
+
+    <?php foreach($detRealisateur2 as $detRealisateur2) { ?>
+     <?= $detRealisateur2['titre']; ?> <br>
+    <?php } ?>
 </body>
 </html>
 

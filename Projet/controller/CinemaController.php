@@ -108,6 +108,7 @@ class CinemaController {
     
     public function detRealisateur($id) {
         $pdo = Connect::seConnecter();
+        // req 1 : infos du réalisateur
         $requete = $pdo->prepare(
             "SELECT CONCAT(personne.prenom, ' ', personne.nom) AS nomRealisateur,
             personne.dateNaissance, personne.sexe
@@ -116,6 +117,17 @@ class CinemaController {
             WHERE realisateur.id_personne = :id");
         $requete->execute(["id" => $id]);
         $detRealisateur = $requete->fetch();
+
+        // req 2 : film réalisés
+        $requete = $pdo->prepare(
+            "SELECT film.titre, realisateur.id_realisateur, film.anneeSortie
+            FROM film
+            INNER JOIN realisateur ON film.id_realisateur = realisateur.id_realisateur
+            WHERE realisateur.id_realisateur = :id
+            ORDER BY film.anneeSortie DESC");
+        $requete->execute(["id" => $id]);
+        $detRealisateur2 = $requete->fetchAll();
+        
         require "view/detailsRealisateur.php";
     }
 
