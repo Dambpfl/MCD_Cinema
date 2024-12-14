@@ -175,8 +175,17 @@ class CinemaController {
 
     // formulaires
 
-    public function formulaires() {
+    public function addGenre() {
         $pdo = Connect::seConnecter();
+        if(isset($_POST["submit"])) {
+
+            $nomGenre = $_POST["nomGenre"];
+
+            $requete = $pdo->prepare(
+                "INSERT INTO genre(type)
+                VALUES (:nomGenre)");
+            $requete->execute(["nomGenre" => $nomGenre]);
+        }
         require "view/formulaires.php";
     }
 }

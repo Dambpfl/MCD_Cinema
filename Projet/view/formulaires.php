@@ -9,20 +9,17 @@
 </head>
 <body>
 
-   <form action="traitement.php?action=add" method="post">
+   <form action="index.php?action=formulaires" method="post">
         <p>
-            <label>
+            <label for="nomGenre">
                 Ajouter un genre :
-                <input type="text" name="name">
+                <input type="text" name="nomGenre">
             </label>
         </p>
         <p>
-            <label>
-                Ajouter un acteur :
-                <input type="text" name="name">
-            </label>
+            <input type="submit" name="submit" value="Ajouter">
         </p>
-   </form>
+    </form>
 
 </body>
 </html>
