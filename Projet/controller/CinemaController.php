@@ -5,9 +5,9 @@ use Model\Connect;
 
 class CinemaController {
 
-    /**
-     * Lister les films
-     */
+
+    // All list
+
     public function listFilms() {
         
         $pdo = Connect::seConnecter();
@@ -47,6 +47,17 @@ class CinemaController {
         $listGenres = $requete->fetchAll();
         require "view/listGenres.php";
     }
+
+    public function listRoles(){
+        $pdo = Connect::seConnecter();
+        $requete = $pdo->query("SELECT role.nomPersonnage, role.id_role FROM role ");
+        $listRoles = $requete->fetchAll();
+        require "view/listRoles.php";
+    }
+
+
+    // All details
+
 
     public function detFilm($id) {
         $pdo = Connect::seConnecter();

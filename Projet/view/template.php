@@ -13,6 +13,7 @@
                 <a href="index.php?action=listActeurs">ACTEURS</a>
                 <a href="index.php?action=listRealisateurs">RÉALISATEURS</a>
                 <a href="index.php?action=listGenres">GENRES</a>
+                <a href="index.php?action=listRoles">ROLES</a>
             </div>
         </nav>
         <div> <?= $contenu ?></div>     
