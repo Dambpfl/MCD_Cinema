@@ -177,16 +177,45 @@ class CinemaController {
 
     public function addGenre() {
         $pdo = Connect::seConnecter();
-        if(isset($_POST["submit"])) {
+        if(isset($_POST["submit"])) {    // verif si submit
 
-            $nomGenre = $_POST["nomGenre"];
+            $nomGenre = $_POST["nomGenre"];  // dit que ma string "submit" = $nomGenre
 
             $requete = $pdo->prepare(
                 "INSERT INTO genre(type)
-                VALUES (:nomGenre)");
+                 VALUES (:nomGenre)");  // insert ma string "submit" dans table genre->type
             $requete->execute(["nomGenre" => $nomGenre]);
         }
-        require "view/formulaires.php";
+        require "view/addGenre.php";
+    }
+
+    public function addActeur() {
+        $pdo = Connect::seConnecter();
+        if(isset($_POST["submit"])) { // verif si submit
+
+            $prenomActeur = $_POST["prenomActeur"]; // string 1 = $prenomActeur
+            $nomActeur = $_POST["nomActeur"]; // string 2 = $nomActeur
+            $choixSexe = $_POST["sexe"]; // radio -> values M or F
+            $dateNaissance = $_POST["dateNaissance"]; // date 
+
+            $requetePersonne = $pdo->prepare(
+                "INSERT INTO personne(prenom, nom, sexe, dateNaissance)
+                 VALUES (:prenomActeur, :nomActeur, :sexe, :dateNaissance)"); // insert dans table personne->prenom,nom,sexe,dateNaissance
+            $requetePersonne->execute(["prenomActeur" => $prenomActeur,
+                                       "nomActeur" => $nomActeur,
+                                       "sexe" => $choixSexe,
+                                       "dateNaissance" => $dateNaissance]);
+
+
+            $idPersonne = $pdo->lastInsertId(); // recup le dernier ID -> de la new personne
+            
+
+            $requeteID = $pdo->prepare(
+                "INSERT INTO acteur(id_personne)
+                 VALUES (:id_personne)"); // insert le new id crée -> table acteur(id_personne)
+            $requeteID->execute(["id_personne" => $idPersonne]);
+        }
+    require "view/addActeur.php";
     }
 }
 

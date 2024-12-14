@@ -9,7 +9,7 @@
 </head>
 <body>
 
-   <form action="index.php?action=formulaires" method="post">
+   <form action="index.php?action=addGenre" method="post">
         <p>
             <label for="nomGenre">
                 Ajouter un genre :

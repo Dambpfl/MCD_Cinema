@@ -17,7 +17,8 @@
             <a href="index.php?action=listRoles">ROLES</a>
         </div>
         <div class="btnGestion">
-            <a href="index.php?action=formulaires">GESTION</a>
+            <a href="index.php?action=addGenre">Ajouter un genre</a>
+            <a href="index.php?action=addActeur">Ajouter un acteur</a>
         </div>
     </nav>
         <div> <?= $contenu ?></div>     
