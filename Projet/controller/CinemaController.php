@@ -155,6 +155,23 @@ class CinemaController {
         $detGenre = $requete->fetchAll();
         require "view/detailsGenre.php";
     }
+
+    public function detRole($id) {
+        $pdo = Connect::seConnecter();
+        $requete = $pdo->prepare(
+            "SELECT role.id_role,
+	        CONCAT(personne.prenom, ' ', personne.nom) AS nomActeur,
+	        film.titre
+            FROM personne
+            INNER JOIN acteur ON personne.id_personne = acteur.id_personne
+            INNER JOIN joue ON acteur.id_acteur = joue.id_acteur
+            INNER JOIN role ON joue.id_role = role.id_role
+            INNER JOIN film ON joue.id_film = film.id_film
+            WHERE role.id_role = :id");
+        $requete->execute(["id" => $id]);
+        $detRole = $requete->fetchAll();
+        require "view/detailsRole.php";
+    }
 }
 
 
