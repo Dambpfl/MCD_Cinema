@@ -172,6 +172,13 @@ class CinemaController {
         $detRole = $requete->fetchAll();
         require "view/detailsRole.php";
     }
+
+    // formulaires
+
+    public function formulaires() {
+        $pdo = Connect::seConnecter();
+        require "view/formulaires.php";
+    }
 }
 
 
