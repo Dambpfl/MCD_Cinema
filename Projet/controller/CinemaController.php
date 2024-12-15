@@ -198,13 +198,13 @@ class CinemaController {
             $choixSexe = $_POST["sexe"]; // radio -> values M or F
             $dateNaissance = $_POST["dateNaissance"]; // date 
 
-            $requetePersonne = $pdo->prepare(
+            $requeteActeur = $pdo->prepare(
                 "INSERT INTO personne(prenom, nom, sexe, dateNaissance)
                  VALUES (:prenomActeur, :nomActeur, :sexe, :dateNaissance)"); // insert dans table personne->prenom,nom,sexe,dateNaissance
-            $requetePersonne->execute(["prenomActeur" => $prenomActeur,
-                                       "nomActeur" => $nomActeur,
-                                       "sexe" => $choixSexe,
-                                       "dateNaissance" => $dateNaissance]);
+            $requeteActeur->execute(["prenomActeur" => $prenomActeur,
+                                     "nomActeur" => $nomActeur,
+                                     "sexe" => $choixSexe,
+                                     "dateNaissance" => $dateNaissance]);
 
 
             $idPersonne = $pdo->lastInsertId(); // recup le dernier ID -> de la new personne
@@ -221,13 +221,50 @@ class CinemaController {
     public function addFilm() {
         $pdo = Connect::seConnecter();
         if(isset($_POST["submit"])) {
+            
+            // add id_realisateur film
+            $prenomRealisateur = $_POST["prenomRealisateur"];
+            $nomRealisateur = $_POST["nomRealisateur"];
+            $sexeRealisateur = $_POST["sexeRealisateur"];
+            $dateNaissanceRealisateur = $_POST["dateNaissanceRealisateur"];
+
+            $requeteRealisateur = $pdo->prepare(
+                "INSERT INTO personne(prenom, nom, sexe, dateNaissance)
+                VALUES (:prenomRealisateur, :nomRealisateur, :sexeRealisateur, :dateNaissanceRealisateur)");
+            $requeteRealisateur->execute(["prenomRealisateur" => $prenomRealisateur,
+                                          "nomRealisateur" => $nomRealisateur,
+                                            "sexeRealisateur" => $sexeRealisateur,
+                                            "dateNaissanceRealisateur" => $dateNaissanceRealisateur]);
+
+            $idPersonne2 = $pdo->lastInsertId();
+
+            $requeteID2 = $pdo->prepare(
+                "INSERT INTO realisateur(id_personne)
+                 VALUES (:id_personne)");
+            $requeteID2->execute(["id_personne" => $idPersonne2]);
+
+
+            // add film
+            $idRealisateur = $pdo->lastInsertId();
 
             $titre = $_POST["titreFilm"];
+            $duree = $_POST["dureeFilm"];
+            $anneeSortie = $_POST["anneeSortieFilm"];
+            $synopsis = $_POST["synopsisFilm"];
+            $note = $_POST["noteFilm"];
+            $affiche = $_POST["afficheFilm"];
 
             $requete = $pdo->prepare(
-                "INSERT INTO film(titre)
-                VALUES (:titre)");
-                $requete->execute(["titre" => $titre]);
+                "INSERT INTO film(titre, duree, anneeSortie, synopsis, note, affiche, id_realisateur)
+                VALUES (:titreFilm, :dureeFilm, :anneeSortieFilm, :synopsisFilm, :noteFilm, :afficheFilm, :id_realisateur)");
+                $requete->execute(["titreFilm" => $titre,
+                                   "dureeFilm" => $duree,
+                                   "anneeSortieFilm" => $anneeSortie,
+                                   "synopsisFilm" => $synopsis,
+                                   "noteFilm" => $note,
+                                   "afficheFilm" => $affiche,
+                                   "id_realisateur" => $idRealisateur]);
+            
         }
         require "view/addFilm.php";
     }
