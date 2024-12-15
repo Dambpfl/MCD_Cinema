@@ -19,6 +19,7 @@
         <div class="btnGestion">
             <a href="index.php?action=addGenre">Ajouter un genre</a>
             <a href="index.php?action=addActeur">Ajouter un acteur</a>
+            <a href="index.php?action=addFilm">Ajouter un film</a>
         </div>
     </nav>
         <div> <?= $contenu ?></div>     

@@ -217,6 +217,20 @@ class CinemaController {
         }
     require "view/addActeur.php";
     }
+
+    public function addFilm() {
+        $pdo = Connect::seConnecter();
+        if(isset($_POST["submit"])) {
+
+            $titre = $_POST["titreFilm"];
+
+            $requete = $pdo->prepare(
+                "INSERT INTO film(titre)
+                VALUES (:titre)");
+                $requete->execute(["titre" => $titre]);
+        }
+        require "view/addFilm.php";
+    }
 }
 
 
