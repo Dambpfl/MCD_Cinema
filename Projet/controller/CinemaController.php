@@ -175,36 +175,44 @@ class CinemaController {
 
     // formulaires
 
+        // add genre
     public function addGenre() {
         $pdo = Connect::seConnecter();
         if(isset($_POST["submit"])) {    // verif si submit
+            
+            $nomGenre = filter_input(INPUT_POST, "nomGenre", FILTER_SANITIZE_FULL_SPECIAL_CHARS);  // dit que ma string "submit" = $nomGenre
 
-            $nomGenre = $_POST["nomGenre"];  // dit que ma string "submit" = $nomGenre
-
-            $requete = $pdo->prepare(
-                "INSERT INTO genre(type)
-                 VALUES (:nomGenre)");  // insert ma string "submit" dans table genre->type
-            $requete->execute(["nomGenre" => $nomGenre]);
-        }
+            if($nomGenre) { // si ok apres filtre
+                $requete = $pdo->prepare(
+                    "INSERT INTO genre(type)
+                     VALUES (:nomGenre)");  // insert ma string "submit" dans table genre->type
+                $requete->execute(["nomGenre" => $nomGenre]);
+            }}
         require "view/addGenre.php";
     }
 
+
+        // add acteur
     public function addActeur() {
         $pdo = Connect::seConnecter();
         if(isset($_POST["submit"])) { // verif si submit
 
-            $prenomActeur = $_POST["prenomActeur"]; // string 1 = $prenomActeur
-            $nomActeur = $_POST["nomActeur"]; // string 2 = $nomActeur
-            $choixSexe = $_POST["sexe"]; // radio -> values M or F
-            $dateNaissance = $_POST["dateNaissance"]; // date 
+            $prenomActeur = filter_input(INPUT_POST, "prenomActeur", FILTER_SANITIZE_FULL_SPECIAL_CHARS); // string 1 = $prenomActeur
+            $nomActeur = filter_input(INPUT_POST, "nomActeur", FILTER_SANITIZE_FULL_SPECIAL_CHARS); // string 2 = $nomActeur
+            $sexeActeur = filter_input(INPUT_POST, "sexeActeur", FILTER_SANITIZE_FULL_SPECIAL_CHARS); // radio -> values M or F
+            $dateNaissance = filter_input(INPUT_POST, "dateNaissance", FILTER_SANITIZE_FULL_SPECIAL_CHARS); // date 
 
-            $requeteActeur = $pdo->prepare(
-                "INSERT INTO personne(prenom, nom, sexe, dateNaissance)
-                 VALUES (:prenomActeur, :nomActeur, :sexe, :dateNaissance)"); // insert dans table personne->prenom,nom,sexe,dateNaissance
-            $requeteActeur->execute(["prenomActeur" => $prenomActeur,
-                                     "nomActeur" => $nomActeur,
-                                     "sexe" => $choixSexe,
-                                     "dateNaissance" => $dateNaissance]);
+
+            if($prenomActeur && $nomActeur && $sexeActeur && $dateNaissance) { // si ok apres filtre
+                
+                $requeteActeur = $pdo->prepare(
+                    "INSERT INTO personne(prenom, nom, sexe, dateNaissance)
+                     VALUES (:prenomActeur, :nomActeur, :sexeActeur, :dateNaissance)"); // insert dans table personne->prenom,nom,sexe,dateNaissance
+                $requeteActeur->execute(["prenomActeur" => $prenomActeur,
+                                         "nomActeur" => $nomActeur,
+                                         "sexeActeur" => $sexeActeur,
+                                         "dateNaissance" => $dateNaissance]);
+            }
 
 
             $idPersonne = $pdo->lastInsertId(); // recup le dernier ID -> de la new personne
@@ -218,6 +226,8 @@ class CinemaController {
     require "view/addActeur.php";
     }
 
+
+        // add film
     public function addFilm() {
         $pdo = Connect::seConnecter();
         if(isset($_POST["submit"])) {

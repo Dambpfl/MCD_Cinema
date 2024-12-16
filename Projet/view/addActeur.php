@@ -23,10 +23,10 @@
            </label>
        </p>
        <p>
-           <label for="sexe">
-               <input type="radio" name="sexe" values="H">
+           <label for="sexeActeur">
+               <input type="radio" name="sexeActeur" values="H">
                Homme
-               <input type="radio" name="sexe" values="F">
+               <input type="radio" name="sexeActeur" values="F">
                Femme
            </label>
        </p>
