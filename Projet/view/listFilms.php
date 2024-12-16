@@ -11,15 +11,17 @@
     <title>Document</title>
 </head>
 <body>
+    <div class="affiche">
     <?php foreach ($listFilms as $listFilm) { ?>
 
-        <a href="index.php?action=detailsFilm&id=<?= $listFilm['id_film'] ?>"><img src="<?= $listFilm['affiche']; ?>" alt=""></a><br>
-
-        <?= $listFilm['titre']; ?> (<?= $listFilm['anneeSortie']; ?>) <br>
-
-        <?= $listFilm['note']; ?> <br>
-
-    <?php } ?>
+            <a href="index.php?action=detailsFilm&id=<?= $listFilm['id_film'] ?>"><img src="<?= $listFilm['affiche']; ?>" alt=""></a><br>
+            
+            <?= $listFilm['titre']; ?> (<?= $listFilm['anneeSortie']; ?>) <br>
+            
+            <?= $listFilm['note']; ?> <br>
+            
+            <?php } ?>
+        </div>
 </body>
 </html>
 

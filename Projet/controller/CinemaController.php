@@ -230,10 +230,19 @@ class CinemaController {
         // add film
     public function addFilm() {
         $pdo = Connect::seConnecter();
+
+        $requete = $pdo->prepare(
+            "SELECT CONCAT(personne.nom, ' ', personne.prenom) AS nomRealisateur,
+            realisateur.id_realisateur
+            FROM personne
+            INNER JOIN realisateur ON personne.id_personne = realisateur.id_personne");
+        $requete->execute();
+        $realisateurs = $requete->fetchAll();
+
         if(isset($_POST["submit"])) {
             
             // add id_realisateur film
-            $prenomRealisateur = $_POST["prenomRealisateur"];
+          /*  $prenomRealisateur = $_POST["prenomRealisateur"];
             $nomRealisateur = $_POST["nomRealisateur"];
             $sexeRealisateur = $_POST["sexeRealisateur"];
             $dateNaissanceRealisateur = $_POST["dateNaissanceRealisateur"];
@@ -251,18 +260,24 @@ class CinemaController {
             $requeteID2 = $pdo->prepare(
                 "INSERT INTO realisateur(id_personne)
                  VALUES (:id_personne)");
-            $requeteID2->execute(["id_personne" => $idPersonne2]);
+            $requeteID2->execute(["id_personne" => $idPersonne2]); */
+
+
+             // $idRealisateur = $pdo->lastInsertId();
+
+
 
 
             // add film
-            $idRealisateur = $pdo->lastInsertId();
+           
 
-            $titre = $_POST["titreFilm"];
-            $duree = $_POST["dureeFilm"];
-            $anneeSortie = $_POST["anneeSortieFilm"];
-            $synopsis = $_POST["synopsisFilm"];
-            $note = $_POST["noteFilm"];
-            $affiche = $_POST["afficheFilm"];
+            $titre = filter_input(INPUT_POST, "titreFilm", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $duree = filter_input(INPUT_POST, "dureeFilm", FILTER_VALIDATE_INT);
+            $anneeSortie = filter_input(INPUT_POST, "anneeSortieFilm", FILTER_VALIDATE_INT);
+            $synopsis = filter_input(INPUT_POST, "synopsisFilm", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $note = filter_input(INPUT_POST, "noteFilm", FILTER_VALIDATE_FLOAT);
+            $affiche = filter_input(INPUT_POST, "afficheFilm", FILTER_SANITIZE_URL);
+            $idRealisateur = filter_input(INPUT_POST, "idRealisateur", FILTER_VALIDATE_INT);
 
             $requete = $pdo->prepare(
                 "INSERT INTO film(titre, duree, anneeSortie, synopsis, note, affiche, id_realisateur)

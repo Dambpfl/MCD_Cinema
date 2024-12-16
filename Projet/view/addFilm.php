@@ -49,7 +49,19 @@
         </p>
 
 
-        <h2>Réalisateur</h2>
+    <label for="idRealisateur">
+        Réalisateur :
+    </label> 
+        <select name="idRealisateur">
+
+        <?php foreach($realisateurs as $realisateur) { ?> 
+
+            <option value=<?= $realisateur["id_realisateur"]; ?> ><?= $realisateur["nomRealisateur"]; ?> </option>
+        <?php } ?>
+        </select>
+    
+
+<!-- 
         <p>
             <label for="prenomRealisateur">
                 Prénom :
@@ -75,7 +87,8 @@
                Date de naissance :
                <input type="date" name="dateNaissanceRealisateur">
            </label>
-       </p>
+       </p>  -->
+
         <p>
             <input type="submit" name="submit" value="Ajouter">
         </p>
