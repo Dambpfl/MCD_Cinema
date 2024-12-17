@@ -232,12 +232,19 @@ class CinemaController {
         $pdo = Connect::seConnecter();
 
         $requete = $pdo->prepare(
-            "SELECT CONCAT(personne.nom, ' ', personne.prenom) AS nomRealisateur,
+            "SELECT CONCAT(personne.prenom, ' ', personne.nom) AS nomRealisateur,
             realisateur.id_realisateur
             FROM personne
             INNER JOIN realisateur ON personne.id_personne = realisateur.id_personne");
         $requete->execute();
         $realisateurs = $requete->fetchAll();
+
+        $requete = $pdo->prepare(
+            "SELECT genre.`type`, genre.id_genre
+             FROM genre ");
+        $requete->execute();
+        $genres = $requete->fetchAll();
+            
 
         if(isset($_POST["submit"])) {
             
@@ -289,6 +296,19 @@ class CinemaController {
                                    "noteFilm" => $note,
                                    "afficheFilm" => $affiche,
                                    "id_realisateur" => $idRealisateur]);
+
+            $idFilm = $pdo->lastInsertId(); // recup l'id du film crée
+
+            $idGenre = filter_input(INPUT_POST, 'genres', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY);
+
+            $requeteGenre = $pdo->prepare(
+                "INSERT INTO possede(id_film, id_genre)
+                 VALUES (:id_film, :id_genre)");
+
+                 foreach($_POST["genres"] as $idGenre) {
+                    $requeteGenre->execute(["id_film" => $idFilm,
+                                            "id_genre" => $idGenre]);
+                 }
             
         }
         require "view/addFilm.php";

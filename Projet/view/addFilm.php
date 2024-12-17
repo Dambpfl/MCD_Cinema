@@ -54,12 +54,23 @@
     </label> 
         <select name="idRealisateur">
 
-        <?php foreach($realisateurs as $realisateur) { ?> 
+            <?php foreach($realisateurs as $realisateur) { ?> 
+                
+                <option value=<?= $realisateur["id_realisateur"]; ?> ><?= $realisateur["nomRealisateur"]; ?> </option>
+                <?php } ?>
+            </select> <br>
+            
+    Genres :
+        <div>
+            <?php foreach($genres as $genre) { ?>
+                <?php // var_dump($genres); die;?>
+                <input type="checkbox" id="<?= $genre['id_genre'];?>" name="genres[]" value="<?= $genre['id_genre'];?>">
+                <label> 
+                    <?= $genre["type"]; ?>
+                </label>
+            <?php } ?>
+        </div>
 
-            <option value=<?= $realisateur["id_realisateur"]; ?> ><?= $realisateur["nomRealisateur"]; ?> </option>
-        <?php } ?>
-        </select>
-    
 
 <!-- 
         <p>
@@ -88,6 +99,9 @@
                <input type="date" name="dateNaissanceRealisateur">
            </label>
        </p>  -->
+
+
+
 
         <p>
             <input type="submit" name="submit" value="Ajouter">
