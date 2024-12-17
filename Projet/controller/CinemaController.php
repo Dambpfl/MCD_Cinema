@@ -299,6 +299,8 @@ class CinemaController {
 
             $idFilm = $pdo->lastInsertId(); // recup l'id du film crée
 
+            // add genre -> film
+
             $idGenre = filter_input(INPUT_POST, 'genres', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY);
 
             $requeteGenre = $pdo->prepare(
@@ -312,6 +314,31 @@ class CinemaController {
             
         }
         require "view/addFilm.php";
+    }
+
+    // supprimer
+
+    public function deleteActeur() {
+        $pdo = Connect::seConnecter();
+
+        if(isset($_GET["id"])) {
+
+            $id_acteur = $_GET["id"];
+            
+            $requete = $pdo->prepare (
+                "DELETE FROM joue
+                WHERE joue.id_acteur = :id");
+            $requete->execute(["id" => $id_acteur]);
+    
+            $requete = $pdo->prepare (
+                "DELETE FROM acteur
+                WHERE acteur.id_acteur = :id");
+            $requete->execute(["id" => $id_acteur]);
+
+        }
+
+        header("Location:index.php?action=listActeurs");
+        exit();
     }
 }
 
