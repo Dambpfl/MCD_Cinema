@@ -10,8 +10,13 @@
 <body>
     <?php foreach ($listRealisateurs as $listRealisateur) { ?>
 
-        <a href="index.php?action=detailsRealisateur&id=<?= $listRealisateur['id_realisateur']?>"> <?= $listRealisateur['nomRealisateur']; ?> </a><br>
-        <?= $listRealisateur['dateNaissance']; ?> <br><br>
+        <div class="realisateur-container">
+            <div class="realisateur">
+                <a href="index.php?action=detailsRealisateur&id=<?= $listRealisateur['id_realisateur']?>"> <?= $listRealisateur['nomRealisateur']; ?> </a>
+                <?= $listRealisateur['dateNaissance']; ?>
+            </div>
+        </div>
+
     <?php } ?>
 </body>
 </html>

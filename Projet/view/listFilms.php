@@ -1,27 +1,28 @@
 <?php ob_start(); ?>
 
 
-<p>Il y a <?= $requete->rowCount(); ?> films</p>
+<h1>TOUS NOS FILMS</h1>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="public/css/style.css">
     <title>Document</title>
 </head>
 <body>
-    <div class="affiche">
-    <?php foreach ($listFilms as $listFilm) { ?>
+    <div class="film-container">
+        <?php foreach ($listFilms as $listFilm) { ?>
 
-            <a href="index.php?action=detailsFilm&id=<?= $listFilm['id_film'] ?>"><img src="<?= $listFilm['affiche']; ?>" alt=""></a><br>
+            <div class="film">           
+                <a href="index.php?action=detailsFilm&id=<?= $listFilm['id_film'] ?>"><img src="<?= $listFilm['affiche']; ?>" alt=""></a>
+                <p class="titre"><?= $listFilm['titre']; ?> (<?= $listFilm['anneeSortie']; ?>)</p>           
+                <p class="note"><?= $listFilm['note']; ?></p> <br>
+            </div>
             
-            <?= $listFilm['titre']; ?> (<?= $listFilm['anneeSortie']; ?>) <br>
-            
-            <?= $listFilm['note']; ?> <br>
-            
-            <?php } ?>
-        </div>
+        <?php } ?>
+    </div>    
 </body>
 </html>
 

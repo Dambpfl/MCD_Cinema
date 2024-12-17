@@ -8,10 +8,13 @@
     <title>Document</title>
 </head>
 <body>
-    <?php foreach ($listGenres as $listGenre) { ?>
-
-        <a href="index.php?action=detailsGenre&id= <?= $listGenre["id_genre"]?>"><?= $listGenre['type']; ?></a> <br><br>
-    <?php } ?>
+    <div class="container-genre">
+        <?php foreach ($listGenres as $listGenre) { ?>
+            <div class="genre">
+                <a href="index.php?action=detailsGenre&id= <?= $listGenre["id_genre"]?>"><?= $listGenre['type']; ?></a>
+            </div>
+        <?php } ?>
+    </div>
 </body>
 </html>
 

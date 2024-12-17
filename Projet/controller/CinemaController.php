@@ -95,7 +95,7 @@ class CinemaController {
             personne.dateNaissance, personne.sexe
             FROM personne
             INNER JOIN acteur ON personne.id_personne = acteur.id_personne
-            WHERE acteur.id_personne = :id");
+            WHERE acteur.id_acteur = :id");
         $requete->execute(["id" => $id]);
         $detActeur = $requete->fetch();
 

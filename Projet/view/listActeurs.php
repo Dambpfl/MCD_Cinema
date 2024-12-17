@@ -9,14 +9,16 @@
 </head>
 <body>
     <?php foreach ($listActeurs as $listActeur) { ?>
-        
-        <a href="index.php?action=deleteActeur&id=<?= $listActeur['id_acteur']?>" class='btn-delete'>x</a>
-        
-        <a href="index.php?action=detailsActeur&id=<?= $listActeur['id_acteur']?>"><?= $listActeur['nomActeur']; ?></a> <br>
-        <?= $listActeur['dateNaissance']; ?> <br><br>
+                
+        <div class="acteur-container">
+            <div class="acteur">
+                <a href="index.php?action=detailsActeur&id=<?= $listActeur['id_acteur']?>"><?= $listActeur['nomActeur']; ?></a>
+                <?= $listActeur['dateNaissance']; ?>
+                <a class="delete" href="index.php?action=deleteActeur&id=<?= $listActeur['id_acteur']?>" class='btn-delete'>Supprimer</a>
+            </div>
+        </div>
 
-
-        <?php } ?>
+    <?php } ?>
 </body>
 </html>
 

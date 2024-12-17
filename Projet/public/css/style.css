@@ -1,6 +1,132 @@
-.affiche img{
-    width: 200px;
-    height: 200px;
+* {
+    box-sizing: border-box;
+}
+
+.logo-container {
+    position: absolute;
+    left:30px;
+    top: -46px;
+
+}
+
+.logo-container .logo-img {
+    width: 130px;
+    height: auto;
 }
 
 
+body {
+    min-height: 100vh;
+    margin: 0;
+    background-image: linear-gradient(#B22222 0%, #4C0F0F 70%);
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    color: #D9D9D9;
+    padding-top: 90px;
+}
+
+nav {
+    background: #B22222;
+    border-bottom: 2px solid #ffff;
+    border-top: 2px solid #ffff;
+    position: fixed;
+    top: 50px;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+
+.boutons a{
+    text-decoration: none;
+    color: #ffff;
+}
+
+.boutons a:hover{
+    color: #FFD700;
+}
+
+body h1 {
+    display: flex;
+    margin-left: 50px;
+    margin-top: 80px;
+    justify-content: center;
+    margin-bottom: 80px;
+}
+
+.btnGestion {
+    display: flex;
+    justify-content: right;
+    margin-right: 30px;
+    margin-top: 15px;
+}
+
+.film-container img{     /* listFilms */
+    width: 100%;
+    aspect-ratio: 170/241;
+    border-radius: 20px;
+}
+
+.film-container {     /* listFilms */
+    width:100%;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 150px);
+    grid-template-rows: auto;
+    grid-column-gap: 50px;
+    grid-row-gap: 40px;
+    justify-content: center;
+}
+
+.film-container .film {     /* listFilms */
+    width: 100%;
+    transition: all 220ms ease-out;
+}
+
+.film:hover{     /* listFilms */
+    transform: scale(1.05);
+}
+
+.titre {      /* listFilms */
+    display: block;
+    text-align: center;
+}
+
+.note {      /* listFilms */
+    display: flex;
+    justify-content: center;
+}
+
+.acteur-container {    /* acteur */
+    background-color: #D9D9D9;
+    border-radius: 35px;
+    height: 65px;
+    margin: 20px;
+    color: black;
+}
+
+.acteur-container .acteur{    /* acteur */
+    display: inline-grid;
+    margin-left: 150px;
+    margin-top: 2px;
+    gap: 2px;
+}
+
+.realisateur-container {     /* realisateur */ 
+    background-color: #D9D9D9;
+    border-radius: 35px;
+    height: 65px;
+    margin: 20px;
+    color: black;
+}
+
+.realisateur-container .realisateur{    /* realisateur*/
+    display: inline-grid;
+    margin-left: 150px;
+    margin-top: 10px;
+    gap: 5px;
+}
