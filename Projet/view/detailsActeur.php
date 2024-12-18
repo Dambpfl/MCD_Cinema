@@ -8,18 +8,34 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="container-detFilm">
-        <img class='detActeur-img' src="<?= $detActeur['photo']; ?>" alt="">
-        <div class="nom-detFilm"><?= $detActeur['nomActeur']; ?></div>
-        <div class="dn-detFilm"><?= $detActeur['dateNaissance']; ?></div>
-        <div class="sexe-detFilm"><?= $detActeur['sexe']; ?></div>
-        
-        <?php foreach($detActeur2 as $detActeur2) { ?>
-            film : <?= $detActeur2['titre']; ?> <br>
-            role : <?= $detActeur2['nomPersonnage']; ?> <br>
-    </div>
+    <div class="container-detAct">
+        <!-- div photo + infos -->
+        <div class="info-detAct">
+            <img class='detAct-img' src="<?= $detActeur['photo']; ?>" alt="">
+            <h2>Informations</h2>
+            <p><?= $detActeur['nomActeur']; ?></p>
+            <p><?= $detActeur['dateNaissance'];?></p> 
+            <p><?= $detActeur['sexe']; ?></p>
+        </div>
 
-    <?php } ?>
+        <!-- div bio + filmo -->
+        <div class="bio-detAct">
+            <h2>Biographie </h2>
+            <h2>Filmographie</h2>
+            <div class="filmo-detAct">
+                <?php foreach($detActeur2 as $detActeur2) { ?>
+                    <div class="bloc-detAct">
+                        <img class='detAct-img2'src="<?= $detActeur2['affiche']; ?>" alt=""> 
+                        <p><?= $detActeur2['titre']; ?> </p>
+                        <i><?= $detActeur2['nomPersonnage'];?></i>
+                    </div>
+                    <?php } ?>
+            </div>
+        </div>  
+    </div>
+            
+
+    
 </body>
 </html>
 

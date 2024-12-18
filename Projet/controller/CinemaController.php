@@ -101,7 +101,7 @@ class CinemaController {
 
         // req 2 : filmographie + role -> fetchAll()
         $requete = $pdo->prepare(
-            "SELECT film.titre, role.nomPersonnage,
+            "SELECT film.titre, role.nomPersonnage, film.affiche,
             acteur.id_acteur
             FROM acteur
             INNER JOIN joue ON acteur.id_acteur = joue.id_acteur
