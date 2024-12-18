@@ -107,10 +107,11 @@ class CinemaController {
             INNER JOIN joue ON acteur.id_acteur = joue.id_acteur
             INNER JOIN film ON joue.id_film = film.id_film
             INNER JOIN role ON joue.id_role = role.id_role
-            WHERE acteur.id_personne = :id
+            WHERE acteur.id_acteur = :id
             ORDER BY film.anneeSortie DESC");
         $requete->execute(["id" => $id]);
         $detActeur2 = $requete->fetchAll();
+
 
         require "view/detailsActeur.php";
     }
