@@ -13,7 +13,7 @@
         <div class="realisateur-container">
             <img class="realisateur-img" src="<?= $listRealisateur['photo']?>" alt="">
             <div class="realisateur">
-                <a href="index.php?action=detailsRealisateur&id=<?= $listRealisateur['id_realisateur']?>"> <?= $listRealisateur['nomRealisateur']; ?> </a>
+                <a class="realisateur-nom" href="index.php?action=detailsRealisateur&id=<?= $listRealisateur['id_realisateur']?>"> <?= $listRealisateur['nomRealisateur']; ?> </a>
                 <?= $listRealisateur['dateNaissance']; ?>
             </div>
         </div>

@@ -92,7 +92,7 @@ class CinemaController {
         // req 1 : infos de l'acteur
         $requete = $pdo->prepare(
             "SELECT CONCAT(personne.prenom, ' ', personne.nom) AS nomActeur,
-            personne.dateNaissance, personne.sexe
+            personne.dateNaissance, personne.sexe, personne.photo
             FROM personne
             INNER JOIN acteur ON personne.id_personne = acteur.id_personne
             WHERE acteur.id_acteur = :id");

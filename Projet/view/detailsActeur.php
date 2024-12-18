@@ -8,13 +8,17 @@
     <title>Document</title>
 </head>
 <body>
-    <?= $detActeur['nomActeur']; ?> <br>
-    <?= $detActeur['dateNaissance']; ?> <br>
-    <?= $detActeur['sexe']; ?> <br> <br>
+    <div class="container-detFilm">
+        <img class='detActeur-img' src="<?= $detActeur['photo']; ?>" alt="">
+        <div class="nom-detFilm"><?= $detActeur['nomActeur']; ?></div>
+        <div class="dn-detFilm"><?= $detActeur['dateNaissance']; ?></div>
+        <div class="sexe-detFilm"><?= $detActeur['sexe']; ?></div>
+        
+        <?php foreach($detActeur2 as $detActeur2) { ?>
+            film : <?= $detActeur2['titre']; ?> <br>
+            role : <?= $detActeur2['nomPersonnage']; ?> <br>
+    </div>
 
-    <?php foreach($detActeur2 as $detActeur2) { ?>
-    film : <?= $detActeur2['titre']; ?> <br>
-    role : <?= $detActeur2['nomPersonnage']; ?> <br>
     <?php } ?>
 </body>
 </html>
