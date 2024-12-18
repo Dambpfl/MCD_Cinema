@@ -1,20 +1,19 @@
 <?php ob_start();?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+
 <body>
-    <?php foreach($detGenre as $detGenre) { ?>
-
-        <?= $detGenre['titre']; ?> <br>
-
-    <?php } ?>
+    <div class="genre-titre">
+        <h2>Catégorie : <?= $genre['type']; ?></h2>
+    </div>
+    <div class="genre-container">
+        <?php foreach($detGenre as $detGenre) { ?>
+            <div class="genre">
+                <?= $detGenre['titre']; ?> <br>
+            </div>
+            <?php } ?>
+    </div>
 </body>
-</html>
+
 
 
 

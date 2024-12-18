@@ -147,6 +147,13 @@ class CinemaController {
     public function detGenre($id) {
         $pdo = Connect::seConnecter();
         $requete = $pdo->prepare(
+            "SELECT genre.type
+            FROM genre
+            WHERE genre.id_genre = :id");
+            $requete->execute(["id" => $id]);
+        $genre = $requete->fetch();
+
+        $requete = $pdo->prepare(
             "SELECT genre.type, film.titre, genre.id_genre
             FROM genre
             INNER JOIN possede ON genre.id_genre = possede.id_genre

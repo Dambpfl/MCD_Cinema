@@ -150,26 +150,32 @@ body h1 {
     gap: 5px;
 }
 
-.realisateur-container .realisateur-nom{
+.realisateur-container .realisateur-nom{  /* realisateur*/
     text-decoration: none;
     color: black;
     font-weight: bold;
 }
 
-.container-genre {        /* genres */
+.container-list-genre {        /* genres */
     display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
     justify-content: center;
     align-items: center;
-    gap: 20px;
     margin-top: 60px;
 }
 
-.genre a{       /* genres */
+.list-genre {
+        text-align: center; 
+}
+
+
+.list-genre a{       /* genres */
     text-decoration: none;
     color: white;
 }
 
-.genre a:hover{      /* genres */
+.list-genre a:hover{      /* genres */
     color: #FFD700;
 }
 
@@ -274,7 +280,24 @@ body h1 {
     justify-content: center;
 }
 
-.addActeur {
+.addActeur { /* addGenre */
+    display: flex;
+    justify-content: center;
+}
+
+.genre-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.genre {
+    padding: 10px; 
+    text-align: center; 
+    border-radius: 5px
+}
+
+.genre-titre {
     display: flex;
     justify-content: center;
 }
