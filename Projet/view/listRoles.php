@@ -8,12 +8,13 @@
     <title>Document</title>
 </head>
 <body>
-    <?php foreach ($listRoles as $listRole) { ?>
-
-    <a href="index.php?action=detailsRole&id=<?= $listRole['id_role']?>"><?= $listRole['nomPersonnage']; ?></a> <br>
-
+    <div class="container-role">
+        <?php foreach ($listRoles as $listRole) { ?>
+            <div class="role">
+                <a href="index.php?action=detailsRole&id=<?= $listRole['id_role']?>"><?= $listRole['nomPersonnage']; ?></a>
+            </div>
         <?php } ?>
-
+    </div>
 </body>
 </html>
 

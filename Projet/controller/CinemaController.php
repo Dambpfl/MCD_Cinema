@@ -22,7 +22,7 @@ class CinemaController {
     public function listActeurs(){
         $pdo = Connect::seConnecter();
         $requete = $pdo->query(
-            "SELECT CONCAT(personne.prenom, ' ',personne.nom) AS nomActeur, personne.dateNaissance, acteur.id_acteur
+            "SELECT CONCAT(personne.prenom, ' ',personne.nom) AS nomActeur, personne.dateNaissance, personne.photo, acteur.id_acteur
             FROM personne
             INNER JOIN acteur ON personne.id_personne = acteur.id_personne
             ORDER BY personne.nom ASC");
@@ -33,7 +33,7 @@ class CinemaController {
     public function listRealisateurs(){
         $pdo = Connect::seConnecter();
         $requete = $pdo->query(
-            "SELECT CONCAT(personne.prenom, ' ',personne.nom) AS nomRealisateur, personne.dateNaissance, realisateur.id_realisateur
+            "SELECT CONCAT(personne.prenom, ' ',personne.nom) AS nomRealisateur, personne.dateNaissance, personne.photo, realisateur.id_realisateur
             FROM personne
             INNER JOIN realisateur ON personne.id_personne = realisateur.id_personne
             ORDER BY personne.nom ASC");
@@ -80,7 +80,7 @@ class CinemaController {
             INNER JOIN film ON joue.id_film = film.id_film
             WHERE film.id_film = :id");
         $requete->execute(["id" => $id]);
-        $detFilm2 = $requete->fetchAll();
+        $casting = $requete->fetchAll();
 
         require "view/detailsFilm.php";
     }

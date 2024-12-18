@@ -1,30 +1,31 @@
 <?php ob_start();?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <img src="<?= $detFilm['affiche']; ?> " alt=""><br>
-    <?= $detFilm['titre']; ?> <br>
-    <?= $detFilm['anneeSortie']; ?> <br>
-    <?= $detFilm['duree']; ?>min <br>
-    <?= $detFilm['synopsis']; ?> <br> <br>
 
-    <?php foreach($detFilm2 as $detFilm2) { ?>
-    <?= $detFilm2['nomActeur']; ?> <br>
-    <?= $detFilm2['nomPersonnage']; ?> <br><br>
-    <?php } ?>
+<div class="container-all">
+    <div class="container-details-film">
+            <img class="details-film-img" src="<?= $detFilm['affiche']; ?> " alt=""><br>
+    </div>      
+            <div class="container-infos-film">
+                    <h2><?= $detFilm['titre']; ?></h2>
 
-</body>
-</html>
+                    <div class="dfSortie"><p>Sortie : <?= $detFilm['anneeSortie'];?></div>
+                    <div class="dfDuree"><p>Durée : <?= $detFilm['duree']; ?> min </p></div>
 
+                    <h2>Synopsis</h2>
+                    <div class="dfSynoposis"><p><?= $detFilm['synopsis']; ?> </p></div>
+                    
+                        
+                    <h2>Acteurs</h2>
+                    <?php foreach($casting as $cast) { ?>
+                        <div class="dfNom"><p><?= $cast['nomActeur']; ?> en tant que : </p></div>
+                        <div class="dfPerso"><i><?= $cast['nomPersonnage']; ?> </i></div>    
+                    
+                    <?php } ?>
+            </div>
+</div>
 
-
-<?
+<?php
+$titre = "Détail Film";
 $contenu = ob_get_clean(); 
 require_once "view/template.php";
 ?>
