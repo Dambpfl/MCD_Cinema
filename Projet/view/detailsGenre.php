@@ -10,7 +10,7 @@
             <div class="genre">
                 <?= $detGenre['titre']; ?> <br>
             </div>
-            <?php } ?>
+        <?php } ?>
     </div>
 </body>
 

@@ -1,15 +1,8 @@
 <?php ob_start(); ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+
 <body>
     <?php foreach ($listRealisateurs as $listRealisateur) { ?>
-
         <div class="realisateur-container">
             <img class="realisateur-img" src="<?= $listRealisateur['photo']?>" alt="">
             <div class="realisateur">
@@ -17,10 +10,8 @@
                 <?= $listRealisateur['dateNaissance']; ?>
             </div>
         </div>
-
     <?php } ?>
 </body>
-</html>
 
 
 <?php 
