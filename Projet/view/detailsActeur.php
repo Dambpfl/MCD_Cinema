@@ -21,6 +21,7 @@
         <!-- div bio + filmo -->
         <div class="bio-detAct">
             <h2>Biographie </h2>
+            <p><?= $detActeur['biographie']; ?></p>
             <h2>Filmographie</h2>
             <div class="filmo-detAct">
                 <?php foreach($detActeur2 as $detActeur2) { ?>

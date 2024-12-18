@@ -8,18 +8,19 @@
     <title>Document</title>
 </head>
 <body>
-
-   <form action="index.php?action=addGenre" method="post">
-        <p>
-            <label for="nomGenre">
-                Ajouter un genre :
-                <input type="text" name="nomGenre">
-            </label>
-        </p>
-        <p>
-            <input type="submit" name="submit" value="Ajouter">
-        </p>
-    </form>
+    <div class="addGenre">
+        <form action="index.php?action=addGenre" method="post">
+             <p>
+                 <label for="nomGenre">
+                     Ajouter un genre :
+                     <input type="text" name="nomGenre">
+                 </label>
+             </p>
+             <p>
+                 <input type="submit" name="submit" value="Ajouter">
+             </p>
+         </form>
+    </div>
 
 </body>
 </html>

@@ -10,7 +10,7 @@
 <body>
 
    <form action="index.php?action=addFilm" method="post">
-    <h1>Film</h1>
+    <div class="af-1">
         <p>
             <label for="titreFilm">
                 Titre :
@@ -47,6 +47,7 @@
                 <input type="text" name="afficheFilm">
             </label>
         </p>
+    </div>
 
 
     <label for="idRealisateur">

@@ -243,3 +243,38 @@ body h1 {
     flex-wrap: wrap;
 }
 
+.detRea-img {  /* details realisateur */
+    height: 500px;
+    border-radius: 20px;
+}
+
+.detRea-img2 { /* details realisateur */
+    height: 250px;
+    border-radius: 20px;
+}
+
+.container-detRea { /* details realisateur */
+    display: flex;
+    margin-left: 50px;
+    margin-top: 50px;
+}
+
+.bio-detRea { /* details realisateur */
+    margin-left: 50px;
+}
+
+.filmo-detRea { /* details realisateur */
+    display: flex;
+    gap: 45px;
+    flex-wrap: wrap;
+}
+
+.addGenre {  /* addGenre */
+    display: flex;
+    justify-content: center;
+}
+
+.addActeur {
+    display: flex;
+    justify-content: center;
+}

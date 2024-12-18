@@ -8,13 +8,30 @@
     <title>Document</title>
 </head>
 <body>
-    <?= $detRealisateur['nomRealisateur']; ?> <br>
-    <?= $detRealisateur['dateNaissance']; ?> <br>
-    <?= $detRealisateur['sexe']; ?> <br><br>
+    <div class="container-detRea">
+        <div class="info-detRea">
+            <img class='detRea-img' src="<?= $detRealisateur['photo'];?>" alt="">
+            <h2>Informations</h2>
+            <p><?= $detRealisateur['nomRealisateur']; ?></p> 
+            <p><?= $detRealisateur['dateNaissance']; ?> </p>
+            <p><?= $detRealisateur['sexe']; ?></p>
+        </div>
 
-    <?php foreach($detRealisateur2 as $detRealisateur2) { ?>
-     <?= $detRealisateur2['titre']; ?> <br>
-    <?php } ?>
+        <div class="bio-detRea">
+            <h2>Biographie</h2>
+            <p><?= $detRealisateur['biographie']; ?></p>
+            <h2>Filmographie</h2>
+            <div class="filmo-detRea">
+                <?php foreach($detRealisateur2 as $detRealisateur2) { ?>
+                    <div class="bloc-detRea">
+                        <img class='detRea-img2' src="<?= $detRealisateur2['affiche']; ?>" alt="">
+                     <p><?= $detRealisateur2['titre']; ?> (<?= $detRealisateur2['anneeSortie']; ?>)</p>
+                    </div>
+                 <?php } ?>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>
 

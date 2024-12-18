@@ -92,7 +92,7 @@ class CinemaController {
         // req 1 : infos de l'acteur
         $requete = $pdo->prepare(
             "SELECT CONCAT(personne.prenom, ' ', personne.nom) AS nomActeur,
-            personne.dateNaissance, personne.sexe, personne.photo
+            personne.dateNaissance, personne.sexe, personne.photo, personne.biographie
             FROM personne
             INNER JOIN acteur ON personne.id_personne = acteur.id_personne
             WHERE acteur.id_acteur = :id");
@@ -122,7 +122,7 @@ class CinemaController {
         // req 1 : infos du réalisateur
         $requete = $pdo->prepare(
             "SELECT CONCAT(personne.prenom, ' ', personne.nom) AS nomRealisateur,
-            personne.dateNaissance, personne.sexe
+            personne.dateNaissance, personne.sexe, personne.photo, personne.biographie
             FROM personne
             INNER JOIN realisateur ON personne.id_personne = realisateur.id_personne
             WHERE realisateur.id_realisateur = :id");
@@ -131,7 +131,7 @@ class CinemaController {
 
         // req 2 : film réalisés
         $requete = $pdo->prepare(
-            "SELECT film.titre, realisateur.id_realisateur, film.anneeSortie
+            "SELECT film.titre, realisateur.id_realisateur, film.anneeSortie, film.affiche
             FROM film
             INNER JOIN realisateur ON film.id_realisateur = realisateur.id_realisateur
             WHERE realisateur.id_realisateur = :id
