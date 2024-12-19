@@ -351,6 +351,25 @@ class CinemaController {
         header("Location:index.php?action=listActeurs");
         exit();
     }
+
+    public function search() {
+
+        $pdo = Connect::seConnecter();
+        if(isset($_POST["submit"])) {
+
+            $term = filter_input(INPUT_POST, "terme", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            if($term) {
+                $requete = $pdo->prepare (
+                    "SELECT * FROM film
+                    WHERE titre LIKE :search");
+                $requete->execute(["search" => '%'.$term.'%']);
+
+                $results = $requete->fetchAll();
+                
+                require "view/resultsSearch.php";
+            }
+        }
+    }
 }
 
 

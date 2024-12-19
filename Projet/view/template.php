@@ -38,6 +38,10 @@
         <a href="index.php?action=addActeur">Ajouter un acteur</a>
         <a href="index.php?action=addFilm">Ajouter un film</a>
     </div>
+    <form action="index.php?action=search" method="post">
+        <input type="search" name="terme">
+        <input type="submit" name="submit" value ="Rechercher">
+    </form>
         <div> <?= $contenu ?></div>
                 <!-- JS -->
         <script src="public/js/main.js"></script>
