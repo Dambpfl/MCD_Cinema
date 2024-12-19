@@ -55,6 +55,11 @@ nav {
     color: #FFD700;
 }
 
+.btnGestion a{
+    text-decoration: none;
+    color: #ffffff;
+}
+
 body h1 {
     display: flex;
     margin-left: 50px;
@@ -429,4 +434,15 @@ body h1 {
         right: 1.5rem;
     }
 
+
+    .container-detRea {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 50px;
+    margin-top: 50px;
+    }
+
+    .bio-detRea {
+        margin-left: 0;
+    }
 }
