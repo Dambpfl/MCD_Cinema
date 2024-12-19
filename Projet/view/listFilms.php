@@ -3,6 +3,10 @@
 
 <h1>TOUS NOS FILMS</h1>
 
+        <!-- Icone note -->
+    <div class="note-star" id="note-star">
+        <i class="ri-star-fill"></i>
+    </div>
 <body>
     <div class="film-container">
         <?php foreach ($listFilms as $listFilm) { ?>
