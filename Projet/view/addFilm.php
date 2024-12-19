@@ -2,7 +2,7 @@
 
 <body>
     <form action="index.php?action=addFilm" method="post">
-    <div class="af-1">
+    <div class="addf-1">
         <p>
             <label for="titreFilm">
                 Titre :
@@ -46,17 +46,18 @@
         </p>
     </div>
 
-    <label for="idRealisateur">
-        Réalisateur :
-    </label> 
-        <select name="idRealisateur">
-            <?php foreach($realisateurs as $realisateur) { ?> 
-                <option value=<?= $realisateur["id_realisateur"]; ?> ><?= $realisateur["nomRealisateur"]; ?> </option>
-            <?php } ?>
-        </select> <br>
+    <div class="addf-2">
+        <label for="idRealisateur">
+            Réalisateur :
+        </label> 
+            <select name="idRealisateur">
+                <?php foreach($realisateurs as $realisateur) { ?> 
+                    <option value=<?= $realisateur["id_realisateur"]; ?> ><?= $realisateur["nomRealisateur"]; ?> </option>
+                <?php } ?>
+            </select>
+    </div>
             
-        Genres :
-        <div>
+        <div class="addf-3">
             <?php foreach($genres as $genre) { ?>
                 <input type="checkbox" id="<?= $genre['id_genre'];?>" name="genres[]" value="<?= $genre['id_genre'];?>">
                 <label> 
@@ -64,6 +65,8 @@
                 </label>
             <?php } ?>
         </div>
+        
+        
 
 <!-- 
         <p>
@@ -92,10 +95,11 @@
                <input type="date" name="dateNaissanceRealisateur">
            </label>
        </p>  -->
-
-        <p>
-            <input type="submit" name="submit" value="Ajouter">
-        </p>
+        <div class="addf-submit">
+            <p>
+                <input type="submit" name="submit" value="Ajouter">
+            </p>
+        </div>
     </form>
 </body>
 
