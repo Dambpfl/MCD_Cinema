@@ -433,7 +433,9 @@ body h1 {
         top: -100%;
         right: 1.5rem;
     }
+}
 
+@media screen and (max-width: 700px) {
 
     .container-detRea {
     display: flex;
@@ -443,6 +445,17 @@ body h1 {
     }
 
     .bio-detRea {
+        margin-left: 0;
+    }
+
+    .container-detAct {
+        display: flex;
+        flex-wrap: wrap;
+        margin-left: 50px;
+        margin-top: 50px;
+    }
+
+    .bio-detAct {
         margin-left: 0;
     }
 }
