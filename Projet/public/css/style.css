@@ -421,6 +421,24 @@ body h1 {
     justify-content: center;
 }
 
+.search {
+    text-align: center;
+}
+
+.bar-search {
+    border-radius: 20px;
+}
+
+.result-film {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.result-img {
+    height: 300px;
+    width: 200px;
+    border-radius: 20px;
+}
 
 @media screen and (max-width: 900px) {
 
@@ -446,7 +464,7 @@ body h1 {
         align-items: center;
         text-align: center;
         border-radius: 20px;
-        height: 40%;
+        height: 50%;
         width: 100%;
         transition: top 0.4s;
     }

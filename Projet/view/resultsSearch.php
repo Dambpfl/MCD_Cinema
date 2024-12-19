@@ -1,9 +1,10 @@
 <?php ob_start();
-    foreach ($results as $result) {
-        echo $result["titre"]."<br>";
-    }
-?>
-
+    foreach ($results as $result) { ?> 
+        <div class="result-film">
+            <img class='result-img' src=<?= $result['affiche'] ?> alt="">
+            <p><?= $result["titre"]." (".$result["anneeSortie"].")"; ?> </p>
+        </div>  
+<?php } ?> 
 
 
 

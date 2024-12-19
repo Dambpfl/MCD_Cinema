@@ -38,9 +38,9 @@
         <a href="index.php?action=addActeur">Ajouter un acteur</a>
         <a href="index.php?action=addFilm">Ajouter un film</a>
     </div>
-    <form action="index.php?action=search" method="post">
-        <input type="search" name="terme">
-        <input type="submit" name="submit" value ="Rechercher">
+    <form class='search' action="index.php?action=search" method="post">
+        <input class='bar-search 'type="search" name="terme">
+        <input class='sub-search' type="submit" name="submit" value ="Rechercher">
     </form>
         <div> <?= $contenu ?></div>
                 <!-- JS -->
