@@ -3,6 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <!-- FONTAWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+                    <!-- REMIXICON-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css">
+                    <!-- CSS -->
     <link rel="stylesheet" href="public/css/style.css">
     <title><?php $titre ?></title>
 </head>
@@ -24,6 +29,14 @@
         <a href="index.php?action=addGenre">Ajouter un genre</a>
         <a href="index.php?action=addActeur">Ajouter un acteur</a>
         <a href="index.php?action=addFilm">Ajouter un film</a>
+    </div>
+        <!-- Ouverture bouton -->
+    <div class="nav-toggle" id="nav-toggle">
+        <i class="ri-menu-line"></i>
+    </div>
+        <!-- Fermeture bouton -->
+    <div class="nav-close" id="nav-close">
+        <i class="ri-close-large-line"></i>
     </div>
         <div> <?= $contenu ?></div>     
 </body>
