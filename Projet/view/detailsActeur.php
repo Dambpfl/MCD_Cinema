@@ -8,7 +8,7 @@
             <img class='detAct-img' src="<?= $detActeur['photo']; ?>" alt="">
             <h2>Informations</h2>
             <p><?= $detActeur['nomActeur']; ?></p>
-            <p><?= $detActeur['dateNaissance'];?></p> 
+            <p><?= $detActeur['dateNaissanceFr'];?></p> 
             <p><?= $detActeur['sexe']; ?></p>
         </div>
 
@@ -20,7 +20,12 @@
             <div class="filmo-detAct">
                 <?php foreach($detActeur2 as $detActeur2) { ?>
                     <div class="bloc-detAct">
-                        <img class='detAct-img2'src="<?= $detActeur2['affiche']; ?>" alt=""> 
+                        <div class="img-note">
+                            <img class='detAct-img2'src="<?= $detActeur2['affiche']; ?>" alt="">
+                            <div class="note-star" id="note-star">
+                            <i class="ri-star-fill"></i> 
+                            <?= $detActeur2['note']; ?> </div>
+                        </div>
                         <p><?= $detActeur2['titre']; ?> </p>
                         <i><?= $detActeur2['nomPersonnage'];?></i>
                     </div>

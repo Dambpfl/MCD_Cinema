@@ -4,16 +4,17 @@
 <h1>TOUS NOS FILMS</h1>
 
         <!-- Icone note -->
-    <div class="note-star" id="note-star">
-        <i class="ri-star-fill"></i>
-    </div>
+   
 <body>
     <div class="film-container">
         <?php foreach ($listFilms as $listFilm) { ?>
             <div class="film">           
                 <a href="index.php?action=detailsFilm&id=<?= $listFilm['id_film'] ?>"><img src="<?= $listFilm['affiche']; ?>" alt=""></a>
-                <p class="titre"><?= $listFilm['titre']; ?> (<?= $listFilm['anneeSortie']; ?>)</p>           
-                <p class="note"><?= $listFilm['note']; ?></p> <br>
+                <p class="titre"><?= $listFilm['titre']; ?> (<?= $listFilm['anneeSortie']; ?>)</p> 
+                    <div class='note'>
+                        <i class="ri-star-fill"></i> 
+                            <?= $listFilm['note']; ?>
+                    </div>
             </div> 
         <?php } ?>
     </div>    

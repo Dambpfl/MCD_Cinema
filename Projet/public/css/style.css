@@ -234,8 +234,14 @@ body h1 {
     border-radius: 20px;
 }
 
+.img-note {
+    height: 250px;
+    width: 170px;
+}
+
 .detAct-img2 { /* details acteur*/
     height: 250px;
+    width: 170px;
     border-radius: 20px;
 }
 
@@ -247,6 +253,11 @@ body h1 {
 
 .bio-detAct { /* details acteur*/
     margin-left: 50px;
+}
+
+.bloc-detAct {
+    width: 170px;
+    text-align: center;
 }
 
 .filmo-detAct { /* details acteur*/
@@ -333,20 +344,85 @@ body h1 {
 
 .nav-toggle,
 .nav-close {
-    display: flex;
+    display: none;
     font-size: 1.5rem;
     color: #ffff;
     cursor: pointer;
 }
 
-@media screen and (max-width: 1150px) {
-    .boutons {
+.nav-toggle {
+    position: absolute;
+    right: 1.5rem;
+    top: 20%;
+}
+
+.nav-close {
+    position: absolute;
+    top: 1rem;
+    right: 3.5rem;
+}
+
+.ri-star-fill {
+    color: yellow;
+}
+
+.img-note {
+    position: relative;
+}
+
+.note-star {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+}
+
+
+@media screen and (max-width: 750px) {
+
+    nav {
+        background: #B22222;
+        border-bottom: 2px solid #ffff;
+        border-top: 2px solid #ffff;
         position: fixed;
-        top: -10%;
+        top: 50px;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        display: flex;
+        justify-content: center;
+        padding: 20px;
     }
 
+    .boutons {
+        position: fixed;
+        top: -120%;
+        background-color: #B22222;
+        display: grid;
+        align-items: center;
+        text-align: center;
+        border-radius: 20px;
+        height: 40%;
+        width: 100%;
+        transition: top 0.4s;
+    }
+
+
     .show-boutons {
-        top: 10%;
+        transition: top 0.4s;
+        top: 0;
+    }
+    
+    .nav-toggle,
+    .nav-close {
+        display: flex;
+    }
+
+    .nav-close {
+        position: absolute;
+        top: -100%;
+        right: 1.5rem;
     }
 
 }

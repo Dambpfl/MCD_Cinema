@@ -7,7 +7,7 @@
             <img class="realisateur-img" src="<?= $listRealisateur['photo']?>" alt="">
             <div class="realisateur">
                 <a class="realisateur-nom" href="index.php?action=detailsRealisateur&id=<?= $listRealisateur['id_realisateur']?>"> <?= $listRealisateur['nomRealisateur']; ?> </a>
-                <?= $listRealisateur['dateNaissance']; ?>
+                <?= $listRealisateur['dateNaissanceFr']; ?>
             </div>
         </div>
     <?php } ?>

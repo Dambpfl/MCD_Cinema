@@ -22,7 +22,7 @@ class CinemaController {
     public function listActeurs(){
         $pdo = Connect::seConnecter();
         $requete = $pdo->query(
-            "SELECT CONCAT(personne.prenom, ' ',personne.nom) AS nomActeur, personne.dateNaissance, personne.photo, acteur.id_acteur
+            "SELECT CONCAT(personne.prenom, ' ',personne.nom) AS nomActeur, DATE_FORMAT(personne.dateNaissance, '%d-%m-%Y') AS dateNaissanceFr, personne.photo, acteur.id_acteur
             FROM personne
             INNER JOIN acteur ON personne.id_personne = acteur.id_personne
             ORDER BY personne.nom ASC");
@@ -33,7 +33,7 @@ class CinemaController {
     public function listRealisateurs(){
         $pdo = Connect::seConnecter();
         $requete = $pdo->query(
-            "SELECT CONCAT(personne.prenom, ' ',personne.nom) AS nomRealisateur, personne.dateNaissance, personne.photo, realisateur.id_realisateur
+            "SELECT CONCAT(personne.prenom, ' ',personne.nom) AS nomRealisateur, DATE_FORMAT(personne.dateNaissance, '%d-%m-%Y') AS dateNaissanceFr, personne.photo, realisateur.id_realisateur
             FROM personne
             INNER JOIN realisateur ON personne.id_personne = realisateur.id_personne
             ORDER BY personne.nom ASC");
@@ -92,7 +92,7 @@ class CinemaController {
         // req 1 : infos de l'acteur
         $requete = $pdo->prepare(
             "SELECT CONCAT(personne.prenom, ' ', personne.nom) AS nomActeur,
-            personne.dateNaissance, personne.sexe, personne.photo, personne.biographie
+            DATE_FORMAT(personne.dateNaissance, '%d-%m-%Y') AS dateNaissanceFr, personne.sexe, personne.photo, personne.biographie
             FROM personne
             INNER JOIN acteur ON personne.id_personne = acteur.id_personne
             WHERE acteur.id_acteur = :id");
@@ -101,7 +101,7 @@ class CinemaController {
 
         // req 2 : filmographie + role -> fetchAll()
         $requete = $pdo->prepare(
-            "SELECT film.titre, role.nomPersonnage, film.affiche,
+            "SELECT film.titre, role.nomPersonnage, film.affiche, film.note,
             acteur.id_acteur
             FROM acteur
             INNER JOIN joue ON acteur.id_acteur = joue.id_acteur
@@ -123,7 +123,7 @@ class CinemaController {
         // req 1 : infos du réalisateur
         $requete = $pdo->prepare(
             "SELECT CONCAT(personne.prenom, ' ', personne.nom) AS nomRealisateur,
-            personne.dateNaissance, personne.sexe, personne.photo, personne.biographie
+            DATE_FORMAT(personne.dateNaissance, '%d-%m-%Y') AS dateNaissanceFr, personne.sexe, personne.photo, personne.biographie
             FROM personne
             INNER JOIN realisateur ON personne.id_personne = realisateur.id_personne
             WHERE realisateur.id_realisateur = :id");

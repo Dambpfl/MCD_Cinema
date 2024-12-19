@@ -7,7 +7,7 @@
             <img class='detRea-img' src="<?= $detRealisateur['photo'];?>" alt="">
             <h2>Informations</h2>
             <p><?= $detRealisateur['nomRealisateur']; ?></p> 
-            <p><?= $detRealisateur['dateNaissance']; ?> </p>
+            <p><?= $detRealisateur['dateNaissanceFr']; ?> </p>
             <p><?= $detRealisateur['sexe']; ?></p>
         </div>
 
