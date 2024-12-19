@@ -25,7 +25,7 @@
                 <h2>Acteurs</h2>
                 <div class="dfCasting">
                         <?php foreach($casting as $cast) { ?>
-                                <p><?= $cast['nomActeur']; ?> en tant que : </p>
+                                <p><a class='df-detAct' href="index.php?action=detailsActeur&id=<?= $cast['id_acteur']?>"><?= $cast['nomActeur']; ?></a> en tant que : </p>
                                 <i><?= $cast['nomPersonnage']; ?> </i> 
                         <?php } ?>
                 </div>

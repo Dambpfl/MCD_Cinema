@@ -75,7 +75,7 @@ class CinemaController {
         // req 2 : casting du film -> fetchAll()
         $requete = $pdo->prepare(
             "SELECT CONCAT(personne.prenom, ' ', personne.nom) AS nomActeur,
-            role.nomPersonnage, film.id_film
+            role.nomPersonnage, film.id_film, acteur.id_acteur 
             FROM personne
             INNER JOIN acteur ON personne.id_personne = acteur.id_personne
             INNER JOIN joue ON acteur.id_acteur = joue.id_acteur
@@ -104,7 +104,7 @@ class CinemaController {
 
         // req 2 : filmographie + role -> fetchAll()
         $requete = $pdo->prepare(
-            "SELECT film.titre, role.nomPersonnage, film.affiche, film.note,
+            "SELECT film.titre, role.nomPersonnage, film.affiche, film.note, film.id_film,
             acteur.id_acteur
             FROM acteur
             INNER JOIN joue ON acteur.id_acteur = joue.id_acteur
@@ -135,7 +135,7 @@ class CinemaController {
 
         // req 2 : film réalisés
         $requete = $pdo->prepare(
-            "SELECT film.titre, realisateur.id_realisateur, film.anneeSortie, film.affiche
+            "SELECT film.titre, realisateur.id_realisateur, film.anneeSortie, film.affiche, film.id_film
             FROM film
             INNER JOIN realisateur ON film.id_realisateur = realisateur.id_realisateur
             WHERE realisateur.id_realisateur = :id

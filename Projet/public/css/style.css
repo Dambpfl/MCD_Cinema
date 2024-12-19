@@ -275,6 +275,11 @@ body h1 {
     flex-wrap: wrap;
 }
 
+.df-detAct { /* details acteur*/
+    text-decoration: none;
+    color:#D9D9D9;
+}
+
 .detRea-img {  /* details realisateur */
     height: 500px;
     border-radius: 20px;
@@ -299,6 +304,10 @@ body h1 {
     display: flex;
     gap: 45px;
     flex-wrap: wrap;
+}
+
+.bloc-detRea { /* details realisateur */
+    text-align: center;
 }
 
 .addGenre {  /* addGenre */

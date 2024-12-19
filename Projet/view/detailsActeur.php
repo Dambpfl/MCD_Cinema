@@ -21,7 +21,7 @@
                 <?php foreach($detActeur2 as $detActeur2) { ?>
                     <div class="bloc-detAct">
                         <div class="img-note">
-                            <img class='detAct-img2'src="<?= $detActeur2['affiche']; ?>" alt="">
+                            <a href="index.php?action=detailsFilm&id=<?= $detActeur2['id_film'] ?>"><img class='detAct-img2'src="<?= $detActeur2['affiche']; ?>" alt=""></a>
                             <div class="note-star" id="note-star">
                             <i class="ri-star-fill"></i> 
                             <?= $detActeur2['note']; ?> </div>

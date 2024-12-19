@@ -18,7 +18,7 @@
             <div class="filmo-detRea">
                 <?php foreach($detRealisateur2 as $detRealisateur2) { ?>
                     <div class="bloc-detRea">
-                        <img class='detRea-img2' src="<?= $detRealisateur2['affiche']; ?>" alt="">
+                        <a href="index.php?action=detailsFilm&id=<?= $detRealisateur2['id_film'] ?>"><img class='detRea-img2' src="<?= $detRealisateur2['affiche']; ?>" alt=""></a>
                      <p><?= $detRealisateur2['titre']; ?> (<?= $detRealisateur2['anneeSortie']; ?>)</p>
                     </div>
                  <?php } ?>
