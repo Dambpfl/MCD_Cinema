@@ -63,8 +63,11 @@ class CinemaController {
         $pdo = Connect::seConnecter();
         // req 1 : infos du film -> fetch()
         $requete = $pdo->prepare(
-            "SELECT film.affiche, film.titre, film.note, film.anneeSortie, film.duree, film.synopsis
+            "SELECT film.affiche, film.titre, film.note, film.anneeSortie, film.duree, film.synopsis,
+            genre.type
             FROM film
+            INNER JOIN possede ON film.id_film = possede.id_film
+            INNER JOIN genre ON possede.id_genre = genre.id_genre
             WHERE film.id_film = :id");
         $requete->execute(["id" => $id]);
         $detFilm = $requete->fetch();

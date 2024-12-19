@@ -10,6 +10,9 @@
                 <div class="dfSortie">
                         <p>Sortie : <?= $detFilm['anneeSortie'];?></p>
                 </div>
+                <div class="dfgenre">
+                        <p>Genre : <?= $detFilm['type']; ?></p>
+                </div>
                 <div class="dfDuree">
                         <p>Durée : <?= $detFilm['duree']; ?> min </p>
                 </div>
