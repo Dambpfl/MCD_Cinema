@@ -78,46 +78,46 @@ SQL
 <h1>🚀 Structure du projet</h1>
 
 
-Projet/
-│
-├── controller/
-|   ├── CinemaController/
-├── model/
-|   ├── Connect.php/
-├── public/
-│   ├── css/
-│   │   ├── style.css
-│   ├── img/
-│   │   ├── logo.png
-│   └── js/
-│       ├── main.js
-├── view/
-│   ├── accueil.php
-│   ├── addActeur.php
-│   ├── addFilm.php
-│   ├── addGenre.php
-│   ├── detailsActeur.php
-│   ├── detailsFilm.php
-│   ├── detailsGenre.php
-│   ├── detailsRealisateur.php
-│   ├── detailsRole.php
-│   ├── listActeurs.php
-│   ├── listFilms.php
-│   ├── listGenres.php
-│   ├── listRealisateurs.php
-│   ├── listRoles.php
-│   ├── resultsSearch.php
-│   └── template.php
-├──  index.php
-│
-├── SQL/
-│   ├── requete.sql
-│   └── script_cinema.sql
-│
-├── MCD_cinema.loo/
-├── preview_MCD_cinema..png/
-│
-└── README.md
+Projet/  
+│  
+├── controller/  
+|   ├── CinemaController/  
+├── model/  
+|   ├── Connect.php/  
+├── public/  
+│   ├── css/  
+│   │   ├── style.css  
+│   ├── img/  
+│   │   ├── logo.png  
+│   └── js/  
+│       ├── main.js  
+├── view/  
+│   ├── accueil.php  
+│   ├── addActeur.php  
+│   ├── addFilm.php  
+│   ├── addGenre.php  
+│   ├── detailsActeur.php  
+│   ├── detailsFilm.php  
+│   ├── detailsGenre.php  
+│   ├── detailsRealisateur.php  
+│   ├── detailsRole.php  
+│   ├── listActeurs.php  
+│   ├── listFilms.php  
+│   ├── listGenres.php  
+│   ├── listRealisateurs.php  
+│   ├── listRoles.php  
+│   ├── resultsSearch.php  
+│   └── template.php  
+├──  index.php  
+│  
+├── SQL/  
+│   ├── requete.sql  
+│   └── script_cinema.sql  
+│  
+├── MCD_cinema.loo/  
+├── preview_MCD_cinema..png/  
+│  
+└── README.md  
 
 <h1>✨ Démonstration</h1>
 <h2>Captures d'écran</h2>
